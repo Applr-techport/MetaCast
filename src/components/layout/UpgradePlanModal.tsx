@@ -190,7 +190,7 @@ export function UpgradePlanModal({ isOpen, onClose }: UpgradePlanModalProps) {
 
                 <div className="mb-4">
                   <span className="text-3xl font-bold">{getPrice(plan)}</span>
-                  {plan.price > 0 && (
+                  {(plan.price.monthly > 0 || plan.price.annual > 0) && (
                     <span className="text-sm text-[var(--muted)] ml-1">/{billingCycle === 'yearly' ? 'year' : 'month'}</span>
                   )}
                 </div>

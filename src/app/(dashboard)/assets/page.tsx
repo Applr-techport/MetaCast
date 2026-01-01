@@ -507,6 +507,7 @@ function AssetListRow({
   onClick: (asset: Asset) => void
   onSchedule: (asset: Asset) => void
 }) {
+  const [showMenu, setShowMenu] = useState(false)
   const Icon = getAssetIcon(asset.type)
   const sourceInfo = getSourceInfo(asset.source)
   const SourceIcon = sourceInfo.icon
