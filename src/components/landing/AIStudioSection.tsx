@@ -135,10 +135,10 @@ export function AIStudioSection() {
               </div>
 
               <Link
-                href="/ai-studio/live-stream"
+                href="/signup"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--secondary)] text-white rounded-lg font-medium hover:bg-[#7c4fe0] transition-colors"
               >
-                Try AI Co-Host
+                Get Started Free
                 <ArrowRight size={16} />
               </Link>
             </div>
