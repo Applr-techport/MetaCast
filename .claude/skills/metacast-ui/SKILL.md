@@ -155,3 +155,10 @@ UI 작성 전 확인:
 - [ ] 버튼/강조는 보라색 사용
 - [ ] 심플하고 깔끔한 디자인
 - [ ] 불필요한 색상 다양성 제거
+
+## Git Push 규칙
+
+푸시 요청 시:
+1. `~/.git-credentials` 파일에서 저장된 토큰 확인
+2. 토큰이 있으면 바로 푸시 실행
+3. `git push https://[TOKEN]@github.com/[REPO].git main` 형식 사용
