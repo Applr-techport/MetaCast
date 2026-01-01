@@ -7,183 +7,176 @@
       - link "MetaCast" [ref=e5] [cursor=pointer]:
         - /url: /dashboard
         - img "MetaCast" [ref=e6]
-      - navigation [ref=e7]:
-        - link "Dashboard" [ref=e8] [cursor=pointer]:
+      - button [ref=e8]:
+        - img [ref=e9]
+      - navigation [ref=e11]:
+        - link "Dashboard" [ref=e12] [cursor=pointer]:
           - /url: /dashboard
-          - generic [ref=e9]:
-            - img [ref=e11]
-            - generic [ref=e16]: Dashboard
-        - link "AI Studio New" [ref=e17] [cursor=pointer]:
+          - generic [ref=e13]:
+            - img [ref=e15]
+            - generic [ref=e20]: Dashboard
+        - link "AI Studio New" [ref=e21] [cursor=pointer]:
           - /url: /ai-studio
-          - generic [ref=e18]:
-            - img [ref=e20]
-            - generic [ref=e23]: AI Studio
-          - generic [ref=e24]: New
-        - link "Schedule Streams 3" [ref=e25] [cursor=pointer]:
+          - generic [ref=e22]:
+            - img [ref=e24]
+            - generic [ref=e27]: AI Studio
+          - generic [ref=e28]: New
+        - link "Schedule 3" [ref=e29] [cursor=pointer]:
           - /url: /schedule
-          - generic [ref=e26]:
-            - img [ref=e28]
-            - generic [ref=e32]: Schedule Streams
-          - generic [ref=e33]: "3"
-        - link "Assets" [ref=e34] [cursor=pointer]:
+          - generic [ref=e30]:
+            - img [ref=e32]
+            - generic [ref=e36]: Schedule
+          - generic [ref=e37]: "3"
+        - link "Assets" [ref=e38] [cursor=pointer]:
           - /url: /assets
-          - generic [ref=e35]:
-            - img [ref=e37]
-            - generic [ref=e39]: Assets
-        - link "Channel 2" [ref=e40] [cursor=pointer]:
+          - generic [ref=e39]:
+            - img [ref=e41]
+            - generic [ref=e43]: Assets
+        - link "Channel 2" [ref=e44] [cursor=pointer]:
           - /url: /channels
-          - generic [ref=e41]:
-            - img [ref=e43]
-            - generic [ref=e49]: Channel
-          - generic [ref=e50]: "2"
-        - link "Team Member 5" [ref=e51] [cursor=pointer]:
+          - generic [ref=e45]:
+            - img [ref=e47]
+            - generic [ref=e53]: Channel
+          - generic [ref=e54]: "2"
+        - link "Team 5" [ref=e55] [cursor=pointer]:
           - /url: /team
-          - generic [ref=e52]:
-            - img [ref=e54]
-            - generic [ref=e59]: Team Member
-          - generic [ref=e60]: "5"
-        - link "Analytics" [ref=e61] [cursor=pointer]:
+          - generic [ref=e56]:
+            - img [ref=e58]
+            - generic [ref=e63]: Team
+          - generic [ref=e64]: "5"
+        - link "Analytics" [ref=e65] [cursor=pointer]:
           - /url: /analytics
-          - generic [ref=e62]:
-            - img [ref=e64]
-            - generic [ref=e66]: Analytics
-      - button "UPGRADE PLAN" [ref=e68]
-      - generic [ref=e69]:
-        - link "Developer Center" [ref=e70] [cursor=pointer]:
-          - /url: /developer
-          - generic [ref=e71]:
-            - img [ref=e73]
-            - generic [ref=e77]: Developer Center
-        - link "Settings" [ref=e78] [cursor=pointer]:
-          - /url: /settings
-          - generic [ref=e79]:
-            - img [ref=e81]
-            - generic [ref=e84]: Settings
-        - link "Help" [ref=e85] [cursor=pointer]:
-          - /url: /help
-          - generic [ref=e86]:
-            - img [ref=e88]
-            - generic [ref=e91]: Help
-      - generic [ref=e93]: v1.0.0
-    - main [ref=e94]:
-      - generic [ref=e95]:
-        - generic [ref=e97]:
-          - generic [ref=e98]:
-            - generic [ref=e99]:
-              - img [ref=e100]
-              - generic [ref=e102]: 2,450 credits
-            - generic [ref=e103]:
-              - img [ref=e104]
-              - generic [ref=e107]: 3 tasks running
-          - button "2" [ref=e109]:
-            - img [ref=e110]
-            - generic [ref=e113]: "2"
-        - generic [ref=e114]:
-          - generic [ref=e115]:
-            - generic [ref=e116]:
-              - generic [ref=e117]:
-                - img [ref=e118]
-                - generic [ref=e121]: AI Generated
-              - paragraph [ref=e122]: 1,247
-            - generic [ref=e123]:
-              - generic [ref=e124]:
-                - img [ref=e125]
-                - generic [ref=e128]: Stream Hours
-              - paragraph [ref=e129]: 324h
-            - generic [ref=e130]:
-              - generic [ref=e131]:
-                - img [ref=e132]
-                - generic [ref=e135]: Total Views
-              - paragraph [ref=e136]: 128K
+          - generic [ref=e66]:
+            - img [ref=e68]
+            - generic [ref=e70]: Analytics
+      - button "UPGRADE PLAN" [ref=e72]
+      - generic [ref=e73]:
+        - button "LM Lee Min Ho lee@metacast.io" [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e78]: LM
+            - generic [ref=e79]:
+              - paragraph [ref=e80]: Lee Min Ho
+              - paragraph [ref=e81]: lee@metacast.io
+        - generic [ref=e82]: v1.0.0
+    - main [ref=e83]:
+      - generic [ref=e84]:
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - generic [ref=e88]:
+              - img [ref=e89]
+              - generic [ref=e91]: 2,450 credits
+            - generic [ref=e92]:
+              - img [ref=e93]
+              - generic [ref=e96]: 3 tasks running
+          - button "2" [ref=e98]:
+            - img [ref=e99]
+            - generic [ref=e102]: "2"
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - img [ref=e107]
+                - generic [ref=e110]: AI Generated
+              - paragraph [ref=e111]: 1,247
+            - generic [ref=e112]:
+              - generic [ref=e113]:
+                - img [ref=e114]
+                - generic [ref=e117]: Stream Hours
+              - paragraph [ref=e118]: 324h
+            - generic [ref=e119]:
+              - generic [ref=e120]:
+                - img [ref=e121]
+                - generic [ref=e124]: Total Views
+              - paragraph [ref=e125]: 128K
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - img [ref=e128]
+                - generic [ref=e133]: Active Viewers
+              - paragraph [ref=e134]: 2.4K
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: AI-powered content creation tools
             - generic [ref=e137]:
-              - generic [ref=e138]:
-                - img [ref=e139]
-                - generic [ref=e144]: Active Viewers
-              - paragraph [ref=e145]: 2.4K
-          - generic [ref=e146]:
-            - paragraph [ref=e147]: AI-powered content creation tools
-            - generic [ref=e148]:
-              - link "Popular AI Live Stream Add an AI co-host to your broadcasts. AI assists with Q&A, product info, and real-time insights. Get Started" [ref=e149] [cursor=pointer]:
+              - link "Popular AI Live Stream Add an AI co-host to your broadcasts. AI assists with Q&A, product info, and real-time insights. Get Started" [ref=e138] [cursor=pointer]:
                 - /url: /ai-studio/live-stream
+                - generic [ref=e139]:
+                  - img [ref=e141]
+                  - generic [ref=e147]: Popular
+                - heading "AI Live Stream" [level=3] [ref=e148]
+                - paragraph [ref=e149]: Add an AI co-host to your broadcasts. AI assists with Q&A, product info, and real-time insights.
                 - generic [ref=e150]:
+                  - generic [ref=e151]: Get Started
                   - img [ref=e152]
-                  - generic [ref=e158]: Popular
-                - heading "AI Live Stream" [level=3] [ref=e159]
-                - paragraph [ref=e160]: Add an AI co-host to your broadcasts. AI assists with Q&A, product info, and real-time insights.
+              - link "AI Video Generator Generate videos from text, images, or existing footage using advanced AI models. Get Started" [ref=e154] [cursor=pointer]:
+                - /url: /ai-studio/video-generator
+                - img [ref=e157]
+                - heading "AI Video Generator" [level=3] [ref=e159]
+                - paragraph [ref=e160]: Generate videos from text, images, or existing footage using advanced AI models.
                 - generic [ref=e161]:
                   - generic [ref=e162]: Get Started
                   - img [ref=e163]
-              - link "AI Video Generator Generate videos from text, images, or existing footage using advanced AI models. Get Started" [ref=e165] [cursor=pointer]:
-                - /url: /ai-studio/video-generator
-                - img [ref=e168]
-                - heading "AI Video Generator" [level=3] [ref=e170]
-                - paragraph [ref=e171]: Generate videos from text, images, or existing footage using advanced AI models.
-                - generic [ref=e172]:
-                  - generic [ref=e173]: Get Started
-                  - img [ref=e174]
-              - link "AI Tools Thumbnails, captions, scripts, and more - all the AI tools you need for content creation. Get Started" [ref=e176] [cursor=pointer]:
+              - link "AI Tools Thumbnails, captions, scripts, and more - all the AI tools you need for content creation. Get Started" [ref=e165] [cursor=pointer]:
                 - /url: /ai-studio/tools
-                - img [ref=e179]
-                - heading "AI Tools" [level=3] [ref=e182]
-                - paragraph [ref=e183]: Thumbnails, captions, scripts, and more - all the AI tools you need for content creation.
-                - generic [ref=e184]:
-                  - generic [ref=e185]: Get Started
-                  - img [ref=e186]
-          - generic [ref=e188]:
-            - paragraph [ref=e189]: Quick access to frequently used AI tools
-            - generic [ref=e190]:
-              - link "Thumbnail" [ref=e191] [cursor=pointer]:
+                - img [ref=e168]
+                - heading "AI Tools" [level=3] [ref=e171]
+                - paragraph [ref=e172]: Thumbnails, captions, scripts, and more - all the AI tools you need for content creation.
+                - generic [ref=e173]:
+                  - generic [ref=e174]: Get Started
+                  - img [ref=e175]
+          - generic [ref=e177]:
+            - paragraph [ref=e178]: Quick access to frequently used AI tools
+            - generic [ref=e179]:
+              - link "Thumbnail" [ref=e180] [cursor=pointer]:
                 - /url: /ai-studio/tools/thumbnail
-                - img [ref=e193]
-                - paragraph [ref=e198]: Thumbnail
-                - img [ref=e199]
-              - link "Captions" [ref=e201] [cursor=pointer]:
+                - img [ref=e182]
+                - paragraph [ref=e187]: Thumbnail
+                - img [ref=e188]
+              - link "Captions" [ref=e190] [cursor=pointer]:
                 - /url: /ai-studio/tools/caption
-                - img [ref=e203]
-                - paragraph [ref=e206]: Captions
-                - img [ref=e207]
-              - link "Script" [ref=e209] [cursor=pointer]:
+                - img [ref=e192]
+                - paragraph [ref=e195]: Captions
+                - img [ref=e196]
+              - link "Script" [ref=e198] [cursor=pointer]:
                 - /url: /ai-studio/tools/script
-                - img [ref=e211]
-                - paragraph [ref=e215]: Script
-                - img [ref=e216]
-              - link "Analyzer" [ref=e218] [cursor=pointer]:
+                - img [ref=e200]
+                - paragraph [ref=e204]: Script
+                - img [ref=e205]
+              - link "Analyzer" [ref=e207] [cursor=pointer]:
                 - /url: /ai-studio/tools/content-analyzer
-                - img [ref=e220]
-                - paragraph [ref=e223]: Analyzer
-                - img [ref=e224]
-          - generic [ref=e226]:
-            - paragraph [ref=e228]: Recent AI content generation activity
-            - generic [ref=e229]:
+                - img [ref=e209]
+                - paragraph [ref=e212]: Analyzer
+                - img [ref=e213]
+          - generic [ref=e215]:
+            - paragraph [ref=e217]: Recent AI content generation activity
+            - generic [ref=e218]:
+              - generic [ref=e219] [cursor=pointer]:
+                - img [ref=e221]
+                - generic [ref=e227]:
+                  - paragraph [ref=e228]: Product Launch Stream
+                  - paragraph [ref=e229]: 2 hours ago
               - generic [ref=e230] [cursor=pointer]:
                 - img [ref=e232]
-                - generic [ref=e238]:
-                  - paragraph [ref=e239]: Product Launch Stream
-                  - paragraph [ref=e240]: 2 hours ago
-              - generic [ref=e241] [cursor=pointer]:
-                - img [ref=e243]
-                - generic [ref=e245]:
-                  - paragraph [ref=e246]: "Product Highlight #12"
-                  - paragraph [ref=e247]: 5 hours ago
-              - generic [ref=e248] [cursor=pointer]:
-                - img [ref=e250]
+                - generic [ref=e234]:
+                  - paragraph [ref=e235]: "Product Highlight #12"
+                  - paragraph [ref=e236]: 5 hours ago
+              - generic [ref=e237] [cursor=pointer]:
+                - img [ref=e239]
+                - generic [ref=e241]:
+                  - paragraph [ref=e242]: Brand Introduction
+                  - paragraph [ref=e243]: Processing 67%
+              - generic [ref=e244] [cursor=pointer]:
+                - img [ref=e246]
                 - generic [ref=e252]:
-                  - paragraph [ref=e253]: Brand Introduction
-                  - paragraph [ref=e254]: Processing 67%
-              - generic [ref=e255] [cursor=pointer]:
-                - img [ref=e257]
-                - generic [ref=e263]:
-                  - paragraph [ref=e264]: Weekly Q&A Session
-                  - paragraph [ref=e265]: Today 3:00 PM
-          - generic [ref=e266]:
-            - generic [ref=e267]:
-              - img [ref=e269]
-              - generic [ref=e271]:
-                - paragraph [ref=e272]: AI Credits Available
-                - paragraph [ref=e273]: 2,450 credits remaining this month
-            - link "Manage Plan" [ref=e274] [cursor=pointer]:
+                  - paragraph [ref=e253]: Weekly Q&A Session
+                  - paragraph [ref=e254]: Today 3:00 PM
+          - generic [ref=e255]:
+            - generic [ref=e256]:
+              - img [ref=e258]
+              - generic [ref=e260]:
+                - paragraph [ref=e261]: AI Credits Available
+                - paragraph [ref=e262]: 2,450 credits remaining this month
+            - link "Manage Plan" [ref=e263] [cursor=pointer]:
               - /url: /settings/billing
-  - button "Open Next.js Dev Tools" [ref=e280] [cursor=pointer]:
-    - img [ref=e281]
-  - alert [ref=e284]
+  - button "Open Next.js Dev Tools" [ref=e269] [cursor=pointer]:
+    - img [ref=e270]
+  - alert [ref=e273]
 ```

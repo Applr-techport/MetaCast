@@ -7,7 +7,8 @@ test.describe('AI Studio', () => {
   })
 
   test('should display AI Studio page', async ({ page }) => {
-    await expect(page.locator('h1').first()).toBeVisible()
+    // Check for AI Studio content instead of h1
+    await expect(page.locator('text=AI Video Generator').first()).toBeVisible()
   })
 
   test('should display video generator section', async ({ page }) => {

@@ -7,7 +7,8 @@ test.describe('Dashboard', () => {
   })
 
   test('should display dashboard page', async ({ page }) => {
-    await expect(page.locator('h1')).toContainText('Dashboard')
+    // Check for dashboard stats cards or content instead of h1
+    await expect(page.locator('text=Total Views').first()).toBeVisible()
   })
 
   test('should display sidebar navigation', async ({ page }) => {
