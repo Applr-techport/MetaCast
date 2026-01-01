@@ -62,12 +62,12 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <Link
                 href="/signup"
-                className="flex items-center justify-center gap-2 px-6 py-3.5 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-xl font-medium transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-xl text-base font-medium transition-colors"
               >
                 Start Free Trial
                 <ArrowRight size={18} />
               </Link>
-              <button className="flex items-center justify-center gap-2 px-6 py-3.5 border border-[var(--border-color)] hover:border-[var(--secondary)] rounded-xl font-medium transition-colors">
+              <button className="flex items-center justify-center gap-2 px-6 py-3 border border-[var(--border-color)] hover:border-[var(--secondary)] rounded-xl text-base font-medium transition-colors">
                 <Play size={18} className="text-[var(--secondary)]" />
                 Watch Demo
               </button>

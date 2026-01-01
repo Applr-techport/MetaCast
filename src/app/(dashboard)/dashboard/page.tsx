@@ -125,7 +125,7 @@ function StorageCard({
       <p className="text-xs text-[var(--muted)] mb-2">{count}</p>
       <div className="flex items-center justify-between">
         <span className="text-xl font-bold">{size}</span>
-        <button className="px-3 py-1 bg-[var(--background)] border border-[var(--border-color)] rounded text-xs hover:bg-[var(--border-color)] transition-colors">
+        <button className="px-2.5 py-1 bg-[var(--background)] border border-[var(--border-color)] rounded text-xs hover:bg-[var(--border-color)] transition-colors">
           More
         </button>
       </div>

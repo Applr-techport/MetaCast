@@ -1,0 +1,189 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - link "MetaCast" [ref=e5] [cursor=pointer]:
+        - /url: /dashboard
+        - img "MetaCast" [ref=e6]
+      - navigation [ref=e7]:
+        - link "Dashboard" [ref=e8] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=e9]:
+            - img [ref=e11]
+            - generic [ref=e16]: Dashboard
+        - link "AI Studio New" [ref=e17] [cursor=pointer]:
+          - /url: /ai-studio
+          - generic [ref=e18]:
+            - img [ref=e20]
+            - generic [ref=e23]: AI Studio
+          - generic [ref=e24]: New
+        - link "Schedule Streams 3" [ref=e25] [cursor=pointer]:
+          - /url: /schedule
+          - generic [ref=e26]:
+            - img [ref=e28]
+            - generic [ref=e32]: Schedule Streams
+          - generic [ref=e33]: "3"
+        - link "Assets" [ref=e34] [cursor=pointer]:
+          - /url: /assets
+          - generic [ref=e35]:
+            - img [ref=e37]
+            - generic [ref=e39]: Assets
+        - link "Channel 2" [ref=e40] [cursor=pointer]:
+          - /url: /channels
+          - generic [ref=e41]:
+            - img [ref=e43]
+            - generic [ref=e49]: Channel
+          - generic [ref=e50]: "2"
+        - link "Team Member 5" [ref=e51] [cursor=pointer]:
+          - /url: /team
+          - generic [ref=e52]:
+            - img [ref=e54]
+            - generic [ref=e59]: Team Member
+          - generic [ref=e60]: "5"
+        - link "Analytics" [ref=e61] [cursor=pointer]:
+          - /url: /analytics
+          - generic [ref=e62]:
+            - img [ref=e64]
+            - generic [ref=e66]: Analytics
+      - button "UPGRADE PLAN" [ref=e68]
+      - generic [ref=e69]:
+        - link "Developer Center" [ref=e70] [cursor=pointer]:
+          - /url: /developer
+          - generic [ref=e71]:
+            - img [ref=e73]
+            - generic [ref=e77]: Developer Center
+        - link "Settings" [ref=e78] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=e79]:
+            - img [ref=e81]
+            - generic [ref=e84]: Settings
+        - link "Help" [ref=e85] [cursor=pointer]:
+          - /url: /help
+          - generic [ref=e86]:
+            - img [ref=e88]
+            - generic [ref=e91]: Help
+      - generic [ref=e93]: v1.0.0
+    - main [ref=e94]:
+      - generic [ref=e95]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - img [ref=e100]
+              - generic [ref=e102]: 2,450 credits
+            - generic [ref=e103]:
+              - img [ref=e104]
+              - generic [ref=e107]: 3 tasks running
+          - button "2" [ref=e109]:
+            - img [ref=e110]
+            - generic [ref=e113]: "2"
+        - generic [ref=e114]:
+          - generic [ref=e115]:
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - img [ref=e118]
+                - generic [ref=e121]: AI Generated
+              - paragraph [ref=e122]: 1,247
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - img [ref=e125]
+                - generic [ref=e128]: Stream Hours
+              - paragraph [ref=e129]: 324h
+            - generic [ref=e130]:
+              - generic [ref=e131]:
+                - img [ref=e132]
+                - generic [ref=e135]: Total Views
+              - paragraph [ref=e136]: 128K
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - img [ref=e139]
+                - generic [ref=e144]: Active Viewers
+              - paragraph [ref=e145]: 2.4K
+          - generic [ref=e146]:
+            - paragraph [ref=e147]: AI-powered content creation tools
+            - generic [ref=e148]:
+              - link "Popular AI Live Stream Add an AI co-host to your broadcasts. AI assists with Q&A, product info, and real-time insights. Get Started" [ref=e149] [cursor=pointer]:
+                - /url: /ai-studio/live-stream
+                - generic [ref=e150]:
+                  - img [ref=e152]
+                  - generic [ref=e158]: Popular
+                - heading "AI Live Stream" [level=3] [ref=e159]
+                - paragraph [ref=e160]: Add an AI co-host to your broadcasts. AI assists with Q&A, product info, and real-time insights.
+                - generic [ref=e161]:
+                  - generic [ref=e162]: Get Started
+                  - img [ref=e163]
+              - link "AI Video Generator Generate videos from text, images, or existing footage using advanced AI models. Get Started" [ref=e165] [cursor=pointer]:
+                - /url: /ai-studio/video-generator
+                - img [ref=e168]
+                - heading "AI Video Generator" [level=3] [ref=e170]
+                - paragraph [ref=e171]: Generate videos from text, images, or existing footage using advanced AI models.
+                - generic [ref=e172]:
+                  - generic [ref=e173]: Get Started
+                  - img [ref=e174]
+              - link "AI Tools Thumbnails, captions, scripts, and more - all the AI tools you need for content creation. Get Started" [ref=e176] [cursor=pointer]:
+                - /url: /ai-studio/tools
+                - img [ref=e179]
+                - heading "AI Tools" [level=3] [ref=e182]
+                - paragraph [ref=e183]: Thumbnails, captions, scripts, and more - all the AI tools you need for content creation.
+                - generic [ref=e184]:
+                  - generic [ref=e185]: Get Started
+                  - img [ref=e186]
+          - generic [ref=e188]:
+            - paragraph [ref=e189]: Quick access to frequently used AI tools
+            - generic [ref=e190]:
+              - link "Thumbnail" [ref=e191] [cursor=pointer]:
+                - /url: /ai-studio/tools/thumbnail
+                - img [ref=e193]
+                - paragraph [ref=e198]: Thumbnail
+                - img [ref=e199]
+              - link "Captions" [ref=e201] [cursor=pointer]:
+                - /url: /ai-studio/tools/caption
+                - img [ref=e203]
+                - paragraph [ref=e206]: Captions
+                - img [ref=e207]
+              - link "Script" [ref=e209] [cursor=pointer]:
+                - /url: /ai-studio/tools/script
+                - img [ref=e211]
+                - paragraph [ref=e215]: Script
+                - img [ref=e216]
+              - link "Analyzer" [ref=e218] [cursor=pointer]:
+                - /url: /ai-studio/tools/content-analyzer
+                - img [ref=e220]
+                - paragraph [ref=e223]: Analyzer
+                - img [ref=e224]
+          - generic [ref=e226]:
+            - paragraph [ref=e228]: Recent AI content generation activity
+            - generic [ref=e229]:
+              - generic [ref=e230] [cursor=pointer]:
+                - img [ref=e232]
+                - generic [ref=e238]:
+                  - paragraph [ref=e239]: Product Launch Stream
+                  - paragraph [ref=e240]: 2 hours ago
+              - generic [ref=e241] [cursor=pointer]:
+                - img [ref=e243]
+                - generic [ref=e245]:
+                  - paragraph [ref=e246]: "Product Highlight #12"
+                  - paragraph [ref=e247]: 5 hours ago
+              - generic [ref=e248] [cursor=pointer]:
+                - img [ref=e250]
+                - generic [ref=e252]:
+                  - paragraph [ref=e253]: Brand Introduction
+                  - paragraph [ref=e254]: Processing 67%
+              - generic [ref=e255] [cursor=pointer]:
+                - img [ref=e257]
+                - generic [ref=e263]:
+                  - paragraph [ref=e264]: Weekly Q&A Session
+                  - paragraph [ref=e265]: Today 3:00 PM
+          - generic [ref=e266]:
+            - generic [ref=e267]:
+              - img [ref=e269]
+              - generic [ref=e271]:
+                - paragraph [ref=e272]: AI Credits Available
+                - paragraph [ref=e273]: 2,450 credits remaining this month
+            - link "Manage Plan" [ref=e274] [cursor=pointer]:
+              - /url: /settings/billing
+  - button "Open Next.js Dev Tools" [ref=e280] [cursor=pointer]:
+    - img [ref=e281]
+  - alert [ref=e284]
+```

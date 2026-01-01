@@ -41,9 +41,9 @@ export default function SignupPage() {
             <Image
               src="/metacast.png"
               alt="MetaCast"
-              width={180}
-              height={36}
-              className="h-9 w-auto"
+              width={240}
+              height={48}
+              className="h-12 w-auto"
               priority
             />
           </Link>

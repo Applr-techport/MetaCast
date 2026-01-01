@@ -1,32 +1,39 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { Youtube, Facebook, Twitter, Linkedin } from 'lucide-react'
 
 export function Footer() {
   const footerLinks = {
-    'Learn More': [
-      { label: 'About us', href: '#' },
-      { label: 'Careers', href: '#' },
+    'Product': [
+      { label: 'Features', href: '/#features' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Press', href: '#' },
+      { label: 'Use Cases', href: '/#use-cases' },
+      { label: 'Integrations', href: '/integrations' },
+      { label: 'Changelog', href: '/changelog' },
     ],
     'Resources': [
-      { label: 'Blog', href: '#' },
-      { label: 'Help Center', href: '#' },
-      { label: 'Contact', href: '#' },
-      { label: 'Privacy Policy', href: '#' },
+      { label: 'Help Center', href: '/help' },
+      { label: 'Developer Center', href: '/developers' },
+      { label: 'API Documentation', href: '/developers/api' },
+      { label: 'System Status', href: '/status' },
+      { label: 'Community', href: '/community' },
     ],
-    'Contact Us': [
-      { label: 'support@metacast.io', href: 'mailto:support@metacast.io' },
-      { label: 'Seoul, Korea', href: '#' },
+    'Company': [
+      { label: 'About Us', href: '/about' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Press Kit', href: '/press' },
+      { label: 'Contact', href: '/contact' },
     ],
   }
 
   const socialLinks = [
-    { name: 'YouTube', href: '#' },
-    { name: 'Facebook', href: '#' },
-    { name: 'Twitter', href: '#' },
-    { name: 'LinkedIn', href: '#' },
+    { name: 'YouTube', href: 'https://youtube.com', icon: Youtube },
+    { name: 'Facebook', href: 'https://facebook.com', icon: Facebook },
+    { name: 'Twitter', href: 'https://twitter.com', icon: Twitter },
+    { name: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin },
   ]
 
   return (
@@ -44,38 +51,46 @@ export function Footer() {
                 className="h-7 w-auto brightness-0 invert"
               />
             </div>
-            <p className="text-white/60 text-sm mb-6">
-              AI-powered multi-channel video automation platform
+            <p className="text-white/60 text-sm mb-4 leading-relaxed">
+              AI-powered multi-channel live streaming platform. Broadcast to YouTube, Facebook, and more simultaneously with intelligent automation.
+            </p>
+            <p className="text-white/40 text-xs mb-6">
+              Trusted by 10,000+ creators and businesses worldwide.
             </p>
 
             {/* Social Links */}
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-                >
-                  <span className="sr-only">{social.name}</span>
-                  <div className="w-5 h-5 bg-white/60 rounded-full" />
-                </a>
-              ))}
+            <div className="flex gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[var(--secondary)] transition-colors"
+                    aria-label={social.name}
+                  >
+                    <Icon size={18} className="text-white/70" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="font-semibold mb-4">{title}</h4>
+              <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider">{title}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-white/60 hover:text-white text-sm transition-colors"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -87,21 +102,21 @@ export function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <p className="text-white/40 text-sm">
-              2024 MetaCast Inc. All rights reserved.
+              2026 MetaCast Inc. All rights reserved.
             </p>
             <span className="text-white/20 text-sm">|</span>
-            <span className="text-white/40 text-xs font-mono">v1.1.0</span>
+            <span className="text-white/40 text-xs font-mono">v1.2.0</span>
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-white/40 hover:text-white text-sm transition-colors">
+            <Link href="/terms" className="text-white/40 hover:text-white text-sm transition-colors">
               Terms of Service
-            </a>
-            <a href="#" className="text-white/40 hover:text-white text-sm transition-colors">
+            </Link>
+            <Link href="/privacy" className="text-white/40 hover:text-white text-sm transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-white/40 hover:text-white text-sm transition-colors">
-              Cookies
-            </a>
+            </Link>
+            <Link href="/cookies" className="text-white/40 hover:text-white text-sm transition-colors">
+              Cookie Policy
+            </Link>
           </div>
         </div>
       </div>

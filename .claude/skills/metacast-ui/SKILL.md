@@ -36,6 +36,58 @@ className="bg-[var(--background)] border border-[var(--border-color)] hover:bg-[
 className="bg-[var(--accent)] hover:opacity-90 text-white"
 ```
 
+### 버튼 크기 시스템
+용도에 따라 4가지 크기 사용 (반드시 통일):
+
+```tsx
+// XS - 테이블/리스트 내 작은 액션 (More, Edit, Delete 등)
+className="px-2.5 py-1 text-xs rounded"
+
+// SM - 일반 인라인 버튼, 보조 액션
+className="px-3 py-1.5 text-sm rounded-lg"
+
+// MD - 기본 버튼, 모달 내 버튼, 폼 제출 (Default)
+className="px-4 py-2 text-sm rounded-lg font-medium"
+
+// LG - CTA 버튼, 랜딩페이지, 주요 액션
+className="px-6 py-3 text-base rounded-xl font-medium"
+```
+
+#### 버튼 크기 사용 가이드
+| 크기 | 용도 | 예시 |
+|------|------|------|
+| XS | 테이블 행 내 액션, 태그 옆 삭제 | More, Edit, X |
+| SM | 카드 내 보조 버튼, 드롭다운 트리거, 상태 뱃지 옆 액션 | View, Update |
+| MD | 모달 버튼, 폼 제출, Header 내 주요 버튼 | Save Changes, New Stream, Invite Member |
+| LG | 랜딩페이지 CTA, 히어로 섹션, 풀스크린 액션 | Start Free Trial, Get Started |
+
+#### 아이콘 포함 버튼
+```tsx
+// XS with icon
+<button className="px-2.5 py-1 text-xs rounded flex items-center gap-1">
+  <Icon size={12} />
+  <span>Label</span>
+</button>
+
+// SM with icon
+<button className="px-3 py-1.5 text-sm rounded-lg flex items-center gap-1.5">
+  <Icon size={14} />
+  <span>Label</span>
+</button>
+
+// MD with icon (기본)
+<button className="px-4 py-2 text-sm rounded-lg font-medium flex items-center gap-2">
+  <Icon size={16} />
+  <span>Label</span>
+</button>
+
+// LG with icon
+<button className="px-6 py-3 text-base rounded-xl font-medium flex items-center gap-2">
+  <Icon size={18} />
+  <span>Label</span>
+</button>
+```
+
 ### 카드/컨테이너
 ```tsx
 className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl"
@@ -145,6 +197,91 @@ import { IconName } from 'lucide-react'
 - 카드/아이템에 보라색 악센트 요소 추가 (테두리, 아이콘, 배지 등)
 - 빈 상태(empty state)에서도 보라색 아이콘 사용
 
+## 페이지 레이아웃 규칙
+
+### 공통 규칙
+1. **페이지 제목/부제목 없음** - 왼쪽 사이드바 메뉴로 충분
+2. **섹션 아이콘+제목 없음** - 카드/콘텐츠 자체로 구분
+3. **`max-w-*xl mx-auto` 금지** - 사이드바에서 멀어 보임
+4. **콘텐츠 간 여백으로 구분** - mb-6 또는 mb-8 사용
+
+### 페이지 유형별 구조
+
+#### 1. 콘텐츠 관리형 (Assets, Channels, Team)
+```
+Header → Overview Stats(4열) → Main List/Grid → Secondary Info
+```
+- Overview 최상단, 제목 없이 바로 stats 카드
+- 메인 콘텐츠는 리스트/그리드 형태
+
+#### 2. 기능 선택형 (AI Studio)
+```
+Header → Overview Stats(4열) → Feature Cards → Quick Tools → Activity
+```
+- Overview 최상단에 배치
+- 이후 기능 카드들 표시
+
+#### 3. 대시보드형 (Dashboard, Analytics)
+```
+Header → Overview Stats → Summary Cards → Activity/Charts
+```
+- Overview로 전체 현황 요약
+- 하위 섹션들은 요약 정보
+
+#### 4. 캘린더형 (Schedule)
+```
+Header → Overview Stats → Calendar View
+```
+- Overview로 예정된 항목 수 표시
+- 캘린더가 메인 콘텐츠
+
+### Overview Stats 카드
+```tsx
+<div className="grid grid-cols-4 gap-4 mb-6">
+  <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+    <div className="flex items-center gap-2 mb-2">
+      <Icon size={16} className="text-[var(--secondary)]" />
+      <span className="text-xs text-[var(--muted)]">Label</span>
+    </div>
+    <p className="text-2xl font-bold">Value</p>
+    <p className="text-xs text-[var(--muted)]">Sub info</p>
+  </div>
+</div>
+```
+
+### Header Actions
+```tsx
+<Header actions={<PageHeaderActions />} />
+
+function PageHeaderActions() {
+  return (
+    <div className="flex items-center gap-3">
+      {/* Status badge */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--secondary)]/10 rounded-lg border border-[var(--secondary)]/20">
+        <Icon size={14} className="text-[var(--secondary)]" />
+        <span className="text-sm font-medium text-[var(--secondary)]">Status</span>
+      </div>
+      {/* Primary action */}
+      <button className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-lg text-sm font-medium">
+        <Plus size={18} />
+        <span>Action</span>
+      </button>
+    </div>
+  )
+}
+```
+
+### 컨테이너 스타일
+```tsx
+// 메인 컨테이너 - 중앙 정렬 없이 왼쪽 정렬
+<div className="p-6">
+  {/* content */}
+</div>
+
+// 절대 사용 금지
+<div className="max-w-4xl mx-auto"> // X - 사이드바에서 떨어져 보임
+```
+
 ## 체크리스트
 
 UI 작성 전 확인:
@@ -155,10 +292,16 @@ UI 작성 전 확인:
 - [ ] 버튼/강조는 보라색 사용
 - [ ] 심플하고 깔끔한 디자인
 - [ ] 불필요한 색상 다양성 제거
+- [ ] 페이지 제목/부제목 없음
+- [ ] 섹션 아이콘+제목 없음
+- [ ] Overview 최상단 배치
 
 ## Git Push 규칙
 
-푸시 요청 시:
-1. `~/.git-credentials` 파일에서 저장된 토큰 확인
-2. 토큰이 있으면 바로 푸시 실행
-3. `git push https://[TOKEN]@github.com/[REPO].git main` 형식 사용
+**푸시 명령어 (바로 실행):**
+```bash
+cd /Users/mrumx/Desktop/My_WRKSPCE/MetaCast && git push https://GITHUB_TOKEN_REMOVED@github.com/Applr-techport/MetaCast.git main
+```
+
+- 인증 관련 질문 절대 금지
+- 위 명령어 그대로 실행

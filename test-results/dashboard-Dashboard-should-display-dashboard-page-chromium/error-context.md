@@ -1,0 +1,273 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - link "MetaCast" [ref=e5] [cursor=pointer]:
+        - /url: /dashboard
+        - img "MetaCast" [ref=e6]
+      - navigation [ref=e7]:
+        - link "Dashboard" [ref=e8] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=e9]:
+            - img [ref=e11]
+            - generic [ref=e16]: Dashboard
+        - link "AI Studio New" [ref=e17] [cursor=pointer]:
+          - /url: /ai-studio
+          - generic [ref=e18]:
+            - img [ref=e20]
+            - generic [ref=e23]: AI Studio
+          - generic [ref=e24]: New
+        - link "Schedule Streams 3" [ref=e25] [cursor=pointer]:
+          - /url: /schedule
+          - generic [ref=e26]:
+            - img [ref=e28]
+            - generic [ref=e32]: Schedule Streams
+          - generic [ref=e33]: "3"
+        - link "Assets" [ref=e34] [cursor=pointer]:
+          - /url: /assets
+          - generic [ref=e35]:
+            - img [ref=e37]
+            - generic [ref=e39]: Assets
+        - link "Channel 2" [ref=e40] [cursor=pointer]:
+          - /url: /channels
+          - generic [ref=e41]:
+            - img [ref=e43]
+            - generic [ref=e49]: Channel
+          - generic [ref=e50]: "2"
+        - link "Team Member 5" [ref=e51] [cursor=pointer]:
+          - /url: /team
+          - generic [ref=e52]:
+            - img [ref=e54]
+            - generic [ref=e59]: Team Member
+          - generic [ref=e60]: "5"
+        - link "Analytics" [ref=e61] [cursor=pointer]:
+          - /url: /analytics
+          - generic [ref=e62]:
+            - img [ref=e64]
+            - generic [ref=e66]: Analytics
+      - button "UPGRADE PLAN" [ref=e68]
+      - generic [ref=e69]:
+        - link "Developer Center" [ref=e70] [cursor=pointer]:
+          - /url: /developer
+          - generic [ref=e71]:
+            - img [ref=e73]
+            - generic [ref=e77]: Developer Center
+        - link "Settings" [ref=e78] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=e79]:
+            - img [ref=e81]
+            - generic [ref=e84]: Settings
+        - link "Help" [ref=e85] [cursor=pointer]:
+          - /url: /help
+          - generic [ref=e86]:
+            - img [ref=e88]
+            - generic [ref=e91]: Help
+      - generic [ref=e93]: v1.0.0
+    - main [ref=e94]:
+      - generic [ref=e95]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - img [ref=e100]
+              - generic [ref=e106]: 2 Live
+            - generic [ref=e107]:
+              - img [ref=e108]
+              - generic [ref=e113]: 12.4K viewers today
+            - button "New Stream" [ref=e115]:
+              - img [ref=e116]
+              - generic [ref=e117]: New Stream
+              - img [ref=e118]
+          - button "2" [ref=e121]:
+            - img [ref=e122]
+            - generic [ref=e125]: "2"
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - img [ref=e130]
+                - generic [ref=e133]: Total Views
+              - paragraph [ref=e134]: 128.4K
+              - paragraph [ref=e135]: +18% this week
+            - generic [ref=e136]:
+              - generic [ref=e137]:
+                - img [ref=e138]
+                - generic [ref=e144]: Live Streams
+              - paragraph [ref=e145]: "24"
+              - paragraph [ref=e146]: This month
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - img [ref=e149]
+                - generic [ref=e152]: Scheduled
+              - paragraph [ref=e153]: "6"
+              - paragraph [ref=e154]: Upcoming streams
+            - generic [ref=e155]:
+              - generic [ref=e156]:
+                - img [ref=e157]
+                - generic [ref=e159]: Storage Used
+              - paragraph [ref=e160]: 72GB
+              - paragraph [ref=e161]: of 100GB
+          - generic [ref=e162]:
+            - paragraph [ref=e163]: Recent and live streams from Schedule
+            - generic [ref=e164]:
+              - link "LIVE Livestream Title 25:34 My Website" [ref=e165] [cursor=pointer]:
+                - /url: /live/1
+                - img [ref=e167]
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - generic [ref=e172]: LIVE
+                    - generic [ref=e173]: Livestream Title
+                  - paragraph [ref=e174]: 25:34
+                  - generic [ref=e176]: My Website
+              - generic [ref=e177] [cursor=pointer]:
+                - img [ref=e179]
+                - generic [ref=e181]:
+                  - generic [ref=e183]: Livestream Title
+                  - paragraph [ref=e184]: 14 Feb, 2021 | 14:25
+                  - generic [ref=e185]:
+                    - generic [ref=e186]: My Website
+                    - generic [ref=e187]: Xcaster App
+              - link "LIVE Livestream Title 25:34 My Website Xcaster App" [ref=e188] [cursor=pointer]:
+                - /url: /live/1
+                - img [ref=e190]
+                - generic [ref=e193]:
+                  - generic [ref=e194]:
+                    - generic [ref=e195]: LIVE
+                    - generic [ref=e196]: Livestream Title
+                  - paragraph [ref=e197]: 25:34
+                  - generic [ref=e198]:
+                    - generic [ref=e199]: My Website
+                    - generic [ref=e200]: Xcaster App
+              - generic [ref=e201] [cursor=pointer]:
+                - img [ref=e203]
+                - generic [ref=e205]:
+                  - generic [ref=e207]: Livestream Title
+                  - paragraph [ref=e208]: 14 Feb, 2021 | 14:25
+                  - generic [ref=e210]: My Website
+          - generic [ref=e211]:
+            - paragraph [ref=e212]: Storage usage by content type from Assets
+            - generic [ref=e213]:
+              - generic [ref=e214]:
+                - img [ref=e216]
+                - heading "Saved Livestream" [level=3] [ref=e218]
+                - paragraph [ref=e219]: 45 Videos
+                - generic [ref=e220]:
+                  - generic [ref=e221]: 34GB
+                  - button "More" [ref=e222]
+              - generic [ref=e223]:
+                - img [ref=e225]
+                - heading "Video on Demand" [level=3] [ref=e227]
+                - paragraph [ref=e228]: 45 Videos
+                - generic [ref=e229]:
+                  - generic [ref=e230]: 25GB
+                  - button "More" [ref=e231]
+              - generic [ref=e232]:
+                - img [ref=e234]
+                - heading "Ads Video" [level=3] [ref=e238]
+                - paragraph [ref=e239]: 45 Videos
+                - generic [ref=e240]:
+                  - generic [ref=e241]: 13GB
+                  - button "More" [ref=e242]
+              - generic [ref=e244]:
+                - img [ref=e245]
+                - generic [ref=e250]:
+                  - generic [ref=e251]: 8GB
+                  - generic [ref=e252]: available
+          - generic [ref=e253]:
+            - paragraph [ref=e254]: Viewer connections by streaming protocol
+            - generic [ref=e255]:
+              - combobox [ref=e256]:
+                - option "last hour" [selected]
+                - option "last 24 hours"
+                - option "last 7 days"
+              - generic [ref=e257]:
+                - generic [ref=e258]: "From:"
+                - textbox [ref=e259]
+                - textbox [ref=e260]
+              - generic [ref=e261]:
+                - generic [ref=e262]: "To:"
+                - textbox [ref=e263]
+                - textbox [ref=e264]
+            - generic [ref=e265]:
+              - generic [ref=e266]:
+                - checkbox "RTMP" [checked] [ref=e267]
+                - generic [ref=e268]: RTMP
+              - generic [ref=e269]:
+                - checkbox "HDS" [checked] [ref=e270]
+                - generic [ref=e271]: HDS
+              - generic [ref=e272]:
+                - checkbox "DASH" [checked] [ref=e273]
+                - generic [ref=e274]: DASH
+              - generic [ref=e275]:
+                - checkbox "HLS" [checked] [ref=e276]
+                - generic [ref=e277]: HLS
+              - generic [ref=e278]:
+                - checkbox "RTSP/RTP" [checked] [ref=e279]
+                - generic [ref=e280]: RTSP/RTP
+              - generic [ref=e281]:
+                - checkbox "Smooth" [checked] [ref=e282]
+                - generic [ref=e283]: Smooth
+              - generic [ref=e284]:
+                - generic [ref=e285]:
+                  - radio "min" [ref=e286]
+                  - generic [ref=e287]: min
+                - generic [ref=e288]:
+                  - radio "max" [ref=e289]
+                  - generic [ref=e290]: max
+                - generic [ref=e291]:
+                  - radio "average" [checked] [ref=e292]
+                  - generic [ref=e293]: average
+                - generic [ref=e294]:
+                  - checkbox "actual" [ref=e295]
+                  - generic [ref=e296]: actual
+            - generic [ref=e297]:
+              - generic [ref=e299]: 08 Mar 21
+              - generic [ref=e301]: 08 Mar 21
+              - generic [ref=e303]: 08 Mar 21
+              - generic [ref=e305]: 08 Mar 21
+              - generic [ref=e307]: 08 Mar 21
+              - generic [ref=e309]: 08 Mar 21
+              - generic [ref=e311]: 08 Mar 21
+          - generic [ref=e312]:
+            - paragraph [ref=e313]: Network bandwidth usage for streaming
+            - generic [ref=e314]:
+              - combobox [ref=e315]:
+                - option "last hour" [selected]
+                - option "last 24 hours"
+                - option "last 7 days"
+              - generic [ref=e316]:
+                - generic [ref=e317]: "From:"
+                - textbox [ref=e318]
+                - textbox [ref=e319]
+              - generic [ref=e320]:
+                - generic [ref=e321]: "To:"
+                - textbox [ref=e322]
+                - textbox [ref=e323]
+            - generic [ref=e324]:
+              - generic [ref=e325]:
+                - checkbox "Bits In" [checked] [ref=e326]
+                - generic [ref=e327]: Bits In
+              - generic [ref=e328]:
+                - checkbox "Bits Out" [checked] [ref=e329]
+                - generic [ref=e330]: Bits Out
+              - generic [ref=e331]:
+                - generic [ref=e332]:
+                  - radio "min" [ref=e333]
+                  - generic [ref=e334]: min
+                - generic [ref=e335]:
+                  - radio "max" [ref=e336]
+                  - generic [ref=e337]: max
+                - generic [ref=e338]:
+                  - radio "average" [checked] [ref=e339]
+                  - generic [ref=e340]: average
+                - generic [ref=e341]:
+                  - checkbox "actual" [ref=e342]
+                  - generic [ref=e343]: actual
+            - generic [ref=e344]:
+              - generic [ref=e345]: 1,000 bits
+              - img [ref=e346]
+  - button "Open Next.js Dev Tools" [ref=e354] [cursor=pointer]:
+    - img [ref=e355]
+  - alert [ref=e358]
+```

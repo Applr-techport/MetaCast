@@ -25,9 +25,9 @@ export function LandingHeader() {
             <Image
               src="/metacast.png"
               alt="MetaCast"
-              width={160}
-              height={32}
-              className="h-8 w-auto"
+              width={180}
+              height={36}
+              className="h-9 w-auto"
               priority
             />
           </Link>
