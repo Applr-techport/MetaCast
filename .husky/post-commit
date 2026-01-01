@@ -1,0 +1,26 @@
+#!/bin/sh
+
+echo "🧪 Running UI tests after commit..."
+
+# Next.js dev 서버 포트 찾기 (3001 우선 - Next.js가 3000이 사용중이면 3001로 감)
+if curl -s --max-time 2 http://localhost:3001 > /dev/null 2>&1; then
+  PORT=3001
+elif curl -s --max-time 2 http://localhost:3000 > /dev/null 2>&1; then
+  PORT=3000
+else
+  PORT=""
+fi
+
+if [ -n "$PORT" ]; then
+  echo "Using dev server on port $PORT"
+  TEST_URL="http://localhost:$PORT" npx playwright test --reporter=line
+else
+  echo "No running server, starting one..."
+  npx playwright test --reporter=line
+fi
+
+if [ $? -eq 0 ]; then
+  echo "✅ All tests passed!"
+else
+  echo "❌ Some tests failed. Check: npx playwright show-report"
+fi

@@ -1,0 +1,2 @@
+# Pre-commit hook (disabled - tests run on post-commit)
+exit 0
