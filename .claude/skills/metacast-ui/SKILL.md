@@ -6,9 +6,10 @@ description: MetaCast UI 컴포넌트 작성. 화면, 컴포넌트, UI 요소 �
 # MetaCast UI 디자인 규칙
 
 ## 절대 금지 사항
-- ❌ 이모지 사용 금지 (🎬, 🚀, ✨ 등 절대 사용하지 않음)
-- ❌ AI 관련 이모지/장식 금지
-- ❌ 과한 그라데이션, 화려한 효과 금지
+- 이모지 절대 금지 (텍스트, UI, 코드 어디에도 사용하지 않음)
+- AI 관련 이모지/장식 절대 금지 (로봇, 스파클, 마법봉 등 모든 AI 느낌 이모지 금지)
+- 과한 그라데이션, 화려한 효과 금지
+- 다양한 색상 사용 금지 (보라색 중심으로 통일)
 
 ## 필수 스타일
 
@@ -47,6 +48,11 @@ className="bg-[var(--background)] border border-[var(--border-color)] rounded-lg
 
 ## 아이콘
 
+### 핵심 원칙: 보라색 아이콘 우선
+- 아이콘은 가급적 보라색(--secondary) 사용
+- 심플하고 단색 아이콘 선호
+- 배경이 있는 아이콘 박스는 보라색 배경 + 흰색 아이콘
+
 ### 사용 라이브러리
 ```tsx
 import { IconName } from 'lucide-react'
@@ -54,14 +60,27 @@ import { IconName } from 'lucide-react'
 
 ### 아이콘 스타일
 ```tsx
-// 일반 아이콘
-<Icon size={18} className="text-[var(--muted)]" />
-
-// 강조 아이콘
+// 기본 아이콘 (보라색 권장)
 <Icon size={18} className="text-[var(--secondary)]" />
 
-// 활성 상태
+// 비활성/보조 아이콘
+<Icon size={18} className="text-[var(--muted)]" />
+
+// 흰색 배경 위 아이콘
 <Icon size={18} className="text-white" />
+```
+
+### 아이콘 박스 (배경 있는 아이콘)
+```tsx
+// 보라색 배경 아이콘 박스 (권장)
+<div className="w-10 h-10 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
+  <Icon size={20} className="text-[var(--secondary)]" />
+</div>
+
+// 보라색 채움 아이콘 박스
+<div className="w-10 h-10 bg-[var(--secondary)] rounded-lg flex items-center justify-center">
+  <Icon size={20} className="text-white" />
+</div>
 ```
 
 ### 자주 사용하는 아이콘
@@ -107,11 +126,32 @@ import { IconName } from 'lucide-react'
 </div>
 ```
 
+## 디자인 원칙
+
+### 보라색 중심 디자인
+- 메인 컬러는 항상 보라색(--secondary: #8b5cf6)
+- 버튼, 아이콘, 강조 요소는 보라색 사용
+- 다른 색상(빨강, 파랑, 초록 등)은 최소화
+- 상태 표시(success, warning, error)만 예외적으로 다른 색상 허용
+- **외부 플랫폼(YouTube, Instagram, Facebook 등)도 보라색으로 통일** - 브랜드 고유 컬러 사용 금지
+
+### 심플함 유지
+- 화려한 효과, 그라데이션 금지
+- 단색 아이콘, 단색 배경 선호
+- 여백을 충분히 사용하여 깔끔하게
+
+### 콘텐츠/아티클 표현
+- 섹션 타이틀 옆에 보라색 아이콘 또는 보라색 포인트 사용
+- 카드/아이템에 보라색 악센트 요소 추가 (테두리, 아이콘, 배지 등)
+- 빈 상태(empty state)에서도 보라색 아이콘 사용
+
 ## 체크리스트
 
 UI 작성 전 확인:
 - [ ] 이모지 없음
 - [ ] CSS 변수 사용 (하드코딩 색상 금지)
 - [ ] lucide-react 아이콘만 사용
+- [ ] 아이콘 색상은 보라색(--secondary) 우선
+- [ ] 버튼/강조는 보라색 사용
 - [ ] 심플하고 깔끔한 디자인
-- [ ] 보라색(--secondary)을 포인트로 사용
+- [ ] 불필요한 색상 다양성 제거
