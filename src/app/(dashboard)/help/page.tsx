@@ -1,7 +1,29 @@
 'use client'
 
 import { Header } from '@/components/layout/Header'
-import { HelpCircle, Book, MessageCircle, Mail, ExternalLink } from 'lucide-react'
+import { HelpCircle, Book, MessageCircle, Mail, ExternalLink, Search, MessageSquare } from 'lucide-react'
+
+// Help Header Actions
+function HelpHeaderActions() {
+  return (
+    <div className="flex items-center gap-3">
+      {/* Search */}
+      <div className="relative">
+        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" />
+        <input
+          type="text"
+          placeholder="Search help articles..."
+          className="w-64 pl-9 pr-4 py-2 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-transparent"
+        />
+      </div>
+      {/* Live Chat Button */}
+      <button className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-lg text-sm font-medium transition-colors">
+        <MessageSquare size={18} />
+        <span>Live Chat</span>
+      </button>
+    </div>
+  )
+}
 
 export default function HelpPage() {
   const helpItems = [
@@ -18,7 +40,7 @@ export default function HelpPage() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header actions={<HelpHeaderActions />} />
       <div className="p-6">
         <div className="flex items-center gap-3 mb-6">
           <HelpCircle size={28} className="text-[var(--secondary)]" />

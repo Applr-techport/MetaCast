@@ -3,6 +3,7 @@ import {
   HeroSection,
   ProblemSection,
   FeaturesSection,
+  AIStudioSection,
   UseCasesSection,
   HowItWorksSection,
   TestimonialsSection,
@@ -17,6 +18,7 @@ export default function LandingPage() {
       <HeroSection />
       <ProblemSection />
       <FeaturesSection />
+      <AIStudioSection />
       <UseCasesSection />
       <HowItWorksSection />
       <TestimonialsSection />

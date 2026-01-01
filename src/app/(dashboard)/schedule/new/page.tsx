@@ -20,15 +20,36 @@ import {
   Trash2,
   Image as ImageIcon,
   Play,
-  Camera,
-  Package,
+  Monitor,
+  ShoppingCart,
+  Film,
   Youtube,
   Facebook,
-  ShoppingCart,
-  Store,
 } from 'lucide-react'
 
-// 플랫폼 목록 (Schedule과 동일하게 lucide 아이콘 사용)
+// Broadcast Type options
+const BROADCAST_TYPES = [
+  {
+    id: 'general',
+    name: 'General Broadcast',
+    description: 'Standard live streaming with engagement features like polls, Q&A, and giveaways',
+    icon: Monitor,
+  },
+  {
+    id: 'commerce',
+    name: 'Live Commerce',
+    description: 'Product showcase and sales with shopping cart integration',
+    icon: ShoppingCart,
+  },
+  {
+    id: 'vod',
+    name: 'VOD Streaming',
+    description: 'Stream pre-recorded content as live with optional product links',
+    icon: Film,
+  },
+]
+
+// Platform list
 const AVAILABLE_PLATFORMS = [
   { id: 'youtube', name: 'YouTube', icon: 'youtube', color: 'text-red-500' },
   { id: 'facebook', name: 'Facebook', icon: 'facebook', color: 'text-blue-600' },
@@ -38,22 +59,7 @@ const AVAILABLE_PLATFORMS = [
   { id: 'instagram', name: 'Instagram', icon: 'instagram', color: 'text-pink-500' },
 ]
 
-// 방송 종류 세분화
-const BROADCAST_TYPES = [
-  { id: 'youtube-live', name: 'YouTube Live', category: 'live' },
-  { id: 'product-sales', name: 'Product Sales', category: 'commerce' },
-  { id: 'news', name: 'News', category: 'media' },
-  { id: 'talk-show', name: 'Talk Show', category: 'entertainment' },
-  { id: 'gaming', name: 'Gaming', category: 'entertainment' },
-  { id: 'music', name: 'Music', category: 'entertainment' },
-  { id: 'education', name: 'Education', category: 'education' },
-  { id: 'webinar', name: 'Webinar', category: 'education' },
-  { id: 'sports', name: 'Sports', category: 'media' },
-  { id: 'interview', name: 'Interview', category: 'media' },
-  { id: 'other', name: 'Other', category: 'other' },
-]
-
-// 쇼핑몰 목록
+// Shopping malls
 const SHOPPING_MALLS = [
   { id: 'coupang', name: 'Coupang' },
   { id: '11st', name: '11st' },
@@ -61,7 +67,7 @@ const SHOPPING_MALLS = [
   { id: 'auction', name: 'Auction' },
 ]
 
-// 플랫폼 아이콘 렌더링 함수
+// Platform icon renderer
 const renderPlatformIcon = (icon: string, size: number = 20) => {
   switch (icon) {
     case 'youtube': return <Youtube size={size} className="text-red-500" />
@@ -74,14 +80,14 @@ const renderPlatformIcon = (icon: string, size: number = 20) => {
   }
 }
 
-// 샘플 상품 목록
+// Sample products
 const SAMPLE_PRODUCTS = [
   { id: '1', name: 'Product Name Here', quantity: 45, price: 25000, image: '' },
   { id: '2', name: 'Another Product', quantity: 30, price: 35000, image: '' },
   { id: '3', name: 'Sample Item', quantity: 100, price: 15000, image: '' },
 ]
 
-// 타임존 목록
+// Timezones
 const TIMEZONES = [
   { value: 'Asia/Seoul', label: '(GMT+09:00) Seoul' },
   { value: 'Asia/Tokyo', label: '(GMT+09:00) Tokyo' },
@@ -90,89 +96,81 @@ const TIMEZONES = [
   { value: 'Europe/London', label: '(GMT+00:00) London' },
 ]
 
-// 플랫폼별 필수 입력 필드 정의
+// Platform settings config
 const PLATFORM_FIELDS: Record<string, { fields: string[]; labels: Record<string, string> }> = {
   youtube: {
     fields: ['streamKey', 'privacy', 'category'],
-    labels: {
-      streamKey: 'Stream Key',
-      privacy: 'Privacy',
-      category: 'Category',
-    }
+    labels: { streamKey: 'Stream Key', privacy: 'Privacy', category: 'Category' }
   },
   facebook: {
     fields: ['pageId', 'privacy'],
-    labels: {
-      pageId: 'Page ID',
-      privacy: 'Privacy',
-    }
+    labels: { pageId: 'Page ID', privacy: 'Privacy' }
   },
   tiktok: {
     fields: ['serverUrl', 'streamKey'],
-    labels: {
-      serverUrl: 'Server URL',
-      streamKey: 'Stream Key',
-    }
+    labels: { serverUrl: 'Server URL', streamKey: 'Stream Key' }
   },
   twitch: {
     fields: ['streamKey', 'category'],
-    labels: {
-      streamKey: 'Stream Key',
-      category: 'Category',
-    }
+    labels: { streamKey: 'Stream Key', category: 'Category' }
   },
   instagram: {
     fields: ['streamUrl', 'streamKey'],
-    labels: {
-      streamUrl: 'Stream URL',
-      streamKey: 'Stream Key',
-    }
+    labels: { streamUrl: 'Stream URL', streamKey: 'Stream Key' }
   },
   kakao: {
     fields: ['channelId', 'streamKey'],
-    labels: {
-      channelId: 'Channel ID',
-      streamKey: 'Stream Key',
-    }
+    labels: { channelId: 'Channel ID', streamKey: 'Stream Key' }
   },
 }
 
 interface StreamFormData {
-  // Step 1
+  // Step 1: Broadcast Type
+  broadcastType: 'general' | 'commerce' | 'vod' | null
+
+  // Step 2: Stream Type
   streamType: 'pre-recorded' | 'live' | null
 
-  // Step 2 - Video Upload (Pre-recorded only)
-  videoFile: {
-    name: string
-    size: number
-    duration: string
-  } | null
-
-  // Step 2 - Stream Settings
+  // Step 3: Stream Settings
+  videoFile: { name: string; size: number; duration: string } | null
   channels: { name: string; url: string }[]
   platforms: { id: string; name: string; icon: string }[]
-  platformSettings: Record<string, Record<string, string>> // 플랫폼별 설정
+  platformSettings: Record<string, Record<string, string>>
   title: string
-  type: string
+  category: string
   description: string
   thumbnail: string | null
   broadcaster: string
   deleteAfterLive: boolean
 
-  // Step 3
+  // Step 4: Products (Commerce only)
   shoppingMall: string
   attachedProducts: typeof SAMPLE_PRODUCTS
 
-  // Step 4
+  // Step 5: Schedule
   scheduledDate: string
   startTime: string
   endTime: string
   timezone: string
 }
 
-// Step 진행바 컴포넌트
-function StepIndicator({ currentStep, totalSteps }: { currentStep: number; totalSteps: number }) {
-  const steps = ['Stream Type', 'Stream Detail', 'Product Attach', 'Schedule']
+// Get step labels based on broadcast type
+function getStepLabels(broadcastType: string | null): string[] {
+  if (broadcastType === 'general') {
+    return ['Broadcast Type', 'Stream Type', 'Stream Detail', 'Schedule']
+  }
+  return ['Broadcast Type', 'Stream Type', 'Stream Detail', 'Products', 'Schedule']
+}
+
+// Step Indicator Component
+function StepIndicator({
+  currentStep,
+  broadcastType
+}: {
+  currentStep: number
+  broadcastType: string | null
+}) {
+  const steps = getStepLabels(broadcastType)
 
   return (
     <div className="flex items-center justify-center mb-8">
@@ -190,13 +188,15 @@ function StepIndicator({ currentStep, totalSteps }: { currentStep: number; total
             >
               {index + 1 < currentStep ? <Check size={18} /> : index + 1}
             </div>
-            <span className={`text-xs mt-2 ${index + 1 === currentStep ? 'text-[var(--secondary)] font-medium' : 'text-[var(--muted)]'}`}>
+            <span className={`text-xs mt-2 whitespace-nowrap ${
+              index + 1 === currentStep ? 'text-[var(--secondary)] font-medium' : 'text-[var(--muted)]'
+            }`}>
               {label}
             </span>
           </div>
           {index < steps.length - 1 && (
             <div
-              className={`w-20 h-0.5 mx-2 ${
+              className={`w-16 h-0.5 mx-2 ${
                 index + 1 < currentStep ? 'bg-[var(--secondary)]' : 'bg-[var(--border-color)]'
               }`}
             />
@@ -207,14 +207,71 @@ function StepIndicator({ currentStep, totalSteps }: { currentStep: number; total
   )
 }
 
-// Step 1: Stream Type 선택
-function Step1StreamType({
+// Step 1: Broadcast Type Selection
+function Step1BroadcastType({
   formData,
   setFormData,
 }: {
   formData: StreamFormData
   setFormData: React.Dispatch<React.SetStateAction<StreamFormData>>
 }) {
+  return (
+    <div className="max-w-3xl mx-auto">
+      <h2 className="text-xl font-semibold text-center mb-2">Select Broadcast Type</h2>
+      <p className="text-[var(--muted)] text-center mb-8">
+        Choose the type of broadcast that best fits your content
+      </p>
+
+      <div className="grid grid-cols-3 gap-6">
+        {BROADCAST_TYPES.map((type) => {
+          const Icon = type.icon
+          const isSelected = formData.broadcastType === type.id
+
+          return (
+            <button
+              key={type.id}
+              onClick={() => setFormData(prev => ({ ...prev, broadcastType: type.id as any }))}
+              className={`p-6 rounded-xl border-2 transition-all text-left ${
+                isSelected
+                  ? 'border-[var(--secondary)] bg-[var(--secondary)]/5'
+                  : 'border-[var(--border-color)] hover:border-[var(--secondary)]/50'
+              }`}
+            >
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${
+                isSelected ? 'bg-[var(--secondary)]' : 'bg-[var(--background)]'
+              }`}>
+                <Icon size={28} className={isSelected ? 'text-white' : 'text-[var(--muted)]'} />
+              </div>
+              <h3 className="font-semibold mb-2">{type.name}</h3>
+              <p className="text-sm text-[var(--muted)] leading-relaxed">{type.description}</p>
+
+              {/* Feature hints */}
+              <div className="mt-4 pt-4 border-t border-[var(--border-color)]">
+                <p className="text-xs text-[var(--muted)]">
+                  {type.id === 'general' && 'Includes: Polls, Q&A, Giveaways, Notices'}
+                  {type.id === 'commerce' && 'Includes: Product Panel, Cart, Sales Tracking'}
+                  {type.id === 'vod' && 'Includes: Video Upload, Optional Products'}
+                </p>
+              </div>
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+// Step 2: Stream Type Selection
+function Step2StreamType({
+  formData,
+  setFormData,
+}: {
+  formData: StreamFormData
+  setFormData: React.Dispatch<React.SetStateAction<StreamFormData>>
+}) {
+  // For VOD broadcast, auto-select pre-recorded
+  const isVOD = formData.broadcastType === 'vod'
+
   return (
     <div className="max-w-2xl mx-auto">
       <h2 className="text-xl font-semibold text-center mb-2">Select Stream Type</h2>
@@ -243,13 +300,16 @@ function Step1StreamType({
           </div>
         </button>
 
-        {/* Live Stream */}
+        {/* Live Stream - disabled for VOD */}
         <button
-          onClick={() => setFormData(prev => ({ ...prev, streamType: 'live' }))}
+          onClick={() => !isVOD && setFormData(prev => ({ ...prev, streamType: 'live' }))}
+          disabled={isVOD}
           className={`p-8 rounded-xl border-2 transition-all ${
             formData.streamType === 'live'
               ? 'border-[var(--secondary)] bg-[var(--secondary)]/5'
-              : 'border-[var(--border-color)] hover:border-[var(--secondary)]/50'
+              : isVOD
+                ? 'border-[var(--border-color)] opacity-50 cursor-not-allowed'
+                : 'border-[var(--border-color)] hover:border-[var(--secondary)]/50'
           }`}
         >
           <div className="flex flex-col items-center text-center">
@@ -262,6 +322,11 @@ function Step1StreamType({
             <p className="text-sm text-[var(--muted)]">
               Stream live content directly from your camera or screen
             </p>
+            {isVOD && (
+              <p className="text-xs text-[var(--accent)] mt-2">
+                Not available for VOD Streaming
+              </p>
+            )}
           </div>
         </button>
       </div>
@@ -269,8 +334,8 @@ function Step1StreamType({
   )
 }
 
-// Step 2: Stream Detail
-function Step2StreamDetail({
+// Step 3: Stream Detail
+function Step3StreamDetail({
   formData,
   setFormData,
 }: {
@@ -286,7 +351,6 @@ function Step2StreamDetail({
     setFormData(prev => {
       const exists = prev.platforms.find(p => p.id === platform.id)
       if (exists) {
-        // 플랫폼 제거 시 해당 플랫폼 설정도 제거
         const newSettings = { ...prev.platformSettings }
         delete newSettings[platform.id]
         return {
@@ -295,7 +359,6 @@ function Step2StreamDetail({
           platformSettings: newSettings
         }
       }
-      // 플랫폼 추가 시 빈 설정 초기화
       return {
         ...prev,
         platforms: [...prev.platforms, { id: platform.id, name: platform.name, icon: platform.icon }],
@@ -309,10 +372,7 @@ function Step2StreamDetail({
       ...prev,
       platformSettings: {
         ...prev.platformSettings,
-        [platformId]: {
-          ...prev.platformSettings[platformId],
-          [field]: value
-        }
+        [platformId]: { ...prev.platformSettings[platformId], [field]: value }
       }
     }))
   }
@@ -320,14 +380,9 @@ function Step2StreamDetail({
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      // 실제로는 파일 업로드 API 호출
       setFormData(prev => ({
         ...prev,
-        videoFile: {
-          name: file.name,
-          size: file.size,
-          duration: '00:00' // 실제로는 비디오 메타데이터에서 추출
-        }
+        videoFile: { name: file.name, size: file.size, duration: '00:00' }
       }))
     }
   }
@@ -339,17 +394,9 @@ function Step2StreamDetail({
     if (file && file.type.startsWith('video/')) {
       setFormData(prev => ({
         ...prev,
-        videoFile: {
-          name: file.name,
-          size: file.size,
-          duration: '00:00'
-        }
+        videoFile: { name: file.name, size: file.size, duration: '00:00' }
       }))
     }
-  }
-
-  const removeVideoFile = () => {
-    setFormData(prev => ({ ...prev, videoFile: null }))
   }
 
   const formatFileSize = (bytes: number) => {
@@ -360,20 +407,10 @@ function Step2StreamDetail({
 
   const addChannel = () => {
     if (newChannel.name && newChannel.url) {
-      setFormData(prev => ({
-        ...prev,
-        channels: [...prev.channels, newChannel]
-      }))
+      setFormData(prev => ({ ...prev, channels: [...prev.channels, newChannel] }))
       setNewChannel({ name: '', url: '' })
       setShowChannelModal(false)
     }
-  }
-
-  const removeChannel = (index: number) => {
-    setFormData(prev => ({
-      ...prev,
-      channels: prev.channels.filter((_, i) => i !== index)
-    }))
   }
 
   return (
@@ -399,7 +436,7 @@ function Step2StreamDetail({
                 </p>
               </div>
               <button
-                onClick={removeVideoFile}
+                onClick={() => setFormData(prev => ({ ...prev, videoFile: null }))}
                 className="p-2 hover:text-[var(--accent)] transition-colors"
               >
                 <X size={18} />
@@ -430,7 +467,6 @@ function Step2StreamDetail({
                   </div>
                   <p className="text-sm font-medium mb-1">Click to upload or drag and drop</p>
                   <p className="text-xs text-[var(--muted)]">MP4, MOV, AVI, MKV up to 10GB</p>
-                  <p className="text-xs text-[var(--muted)] mt-1">Maximum duration: 4 hours</p>
                 </div>
               </label>
             </div>
@@ -449,10 +485,7 @@ function Step2StreamDetail({
             >
               {renderPlatformIcon(platform.icon, 16)}
               <span>{platform.name}</span>
-              <button
-                onClick={() => togglePlatform(platform as any)}
-                className="hover:text-[var(--accent)]"
-              >
+              <button onClick={() => togglePlatform(platform as any)} className="hover:text-[var(--accent)]">
                 <X size={14} />
               </button>
             </span>
@@ -478,7 +511,10 @@ function Step2StreamDetail({
                 <p className="text-xs text-[var(--muted)]">{channel.url}</p>
               </div>
               <button
-                onClick={() => removeChannel(index)}
+                onClick={() => setFormData(prev => ({
+                  ...prev,
+                  channels: prev.channels.filter((_, i) => i !== index)
+                }))}
                 className="p-1 hover:text-[var(--accent)]"
               >
                 <X size={16} />
@@ -495,7 +531,7 @@ function Step2StreamDetail({
         </div>
       </div>
 
-      {/* Platform Settings - 플랫폼별 설정 폼 */}
+      {/* Platform Settings */}
       {formData.platforms.length > 0 && (
         <div className="space-y-4">
           <label className="block text-sm font-medium">Platform Settings</label>
@@ -538,8 +574,6 @@ function Step2StreamDetail({
                           <option value="music">Music</option>
                           <option value="sports">Sports</option>
                           <option value="education">Education</option>
-                          <option value="news">News & Politics</option>
-                          <option value="howto">Howto & Style</option>
                         </select>
                       ) : (
                         <input
@@ -571,42 +605,23 @@ function Step2StreamDetail({
         />
       </div>
 
-      {/* Type */}
+      {/* Category */}
       <div>
-        <label className="block text-sm font-medium mb-2">Broadcast Type</label>
-        <div className="relative">
-          <select
-            value={formData.type}
-            onChange={e => setFormData(prev => ({ ...prev, type: e.target.value }))}
-            className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)] appearance-none"
-          >
-            <option value="">Select broadcast type</option>
-            <optgroup label="Live">
-              <option value="youtube-live">YouTube Live</option>
-            </optgroup>
-            <optgroup label="Commerce">
-              <option value="product-sales">Product Sales</option>
-            </optgroup>
-            <optgroup label="Media">
-              <option value="news">News</option>
-              <option value="sports">Sports</option>
-              <option value="interview">Interview</option>
-            </optgroup>
-            <optgroup label="Entertainment">
-              <option value="talk-show">Talk Show</option>
-              <option value="gaming">Gaming</option>
-              <option value="music">Music</option>
-            </optgroup>
-            <optgroup label="Education">
-              <option value="education">Education</option>
-              <option value="webinar">Webinar</option>
-            </optgroup>
-            <optgroup label="Other">
-              <option value="other">Other</option>
-            </optgroup>
-          </select>
-          <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--muted)] pointer-events-none" />
-        </div>
+        <label className="block text-sm font-medium mb-2">Category</label>
+        <select
+          value={formData.category}
+          onChange={e => setFormData(prev => ({ ...prev, category: e.target.value }))}
+          className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
+        >
+          <option value="">Select category</option>
+          <option value="gaming">Gaming</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="music">Music</option>
+          <option value="education">Education</option>
+          <option value="sports">Sports</option>
+          <option value="news">News</option>
+          <option value="talk-show">Talk Show</option>
+        </select>
       </div>
 
       {/* Description */}
@@ -638,19 +653,16 @@ function Step2StreamDetail({
       {/* Broadcaster */}
       <div>
         <label className="block text-sm font-medium mb-2">Broadcaster</label>
-        <div className="relative">
-          <select
-            value={formData.broadcaster}
-            onChange={e => setFormData(prev => ({ ...prev, broadcaster: e.target.value }))}
-            className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)] appearance-none"
-          >
-            <option value="">Select broadcaster</option>
-            <option value="Lee Min Ho">Lee Min Ho</option>
-            <option value="Kim Soo Jin">Kim Soo Jin</option>
-            <option value="Park Ji Yeon">Park Ji Yeon</option>
-          </select>
-          <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--muted)] pointer-events-none" />
-        </div>
+        <select
+          value={formData.broadcaster}
+          onChange={e => setFormData(prev => ({ ...prev, broadcaster: e.target.value }))}
+          className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
+        >
+          <option value="">Select broadcaster</option>
+          <option value="Lee Min Ho">Lee Min Ho</option>
+          <option value="Kim Soo Jin">Kim Soo Jin</option>
+          <option value="Park Ji Yeon">Park Ji Yeon</option>
+        </select>
       </div>
 
       {/* Delete After Live */}
@@ -676,9 +688,7 @@ function Step2StreamDetail({
           <div className="bg-[var(--card-bg)] rounded-xl p-6 w-full max-w-md">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">Select Platforms</h3>
-              <button onClick={() => setShowPlatformModal(false)}>
-                <X size={20} />
-              </button>
+              <button onClick={() => setShowPlatformModal(false)}><X size={20} /></button>
             </div>
             <div className="grid grid-cols-2 gap-3">
               {AVAILABLE_PLATFORMS.map(platform => {
@@ -701,16 +711,7 @@ function Step2StreamDetail({
                 )
               })}
             </div>
-            <div className="flex justify-between mt-4">
-              <button
-                onClick={() => {
-                  setShowPlatformModal(false)
-                  setShowChannelModal(true)
-                }}
-                className="text-sm text-[var(--secondary)] hover:underline"
-              >
-                + Add Custom Channel
-              </button>
+            <div className="flex justify-end mt-4">
               <button
                 onClick={() => setShowPlatformModal(false)}
                 className="px-4 py-2 bg-[var(--secondary)] text-white rounded-lg text-sm font-medium hover:bg-[#7c4fe0] transition-colors"
@@ -728,9 +729,7 @@ function Step2StreamDetail({
           <div className="bg-[var(--card-bg)] rounded-xl p-6 w-full max-w-md">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">Add Custom Channel</h3>
-              <button onClick={() => setShowChannelModal(false)}>
-                <X size={20} />
-              </button>
+              <button onClick={() => setShowChannelModal(false)}><X size={20} /></button>
             </div>
             <div className="space-y-4">
               <div>
@@ -775,8 +774,8 @@ function Step2StreamDetail({
   )
 }
 
-// Step 3: Product Attach
-function Step3ProductAttach({
+// Step 4: Product Attach (Commerce and VOD only)
+function Step4ProductAttach({
   formData,
   setFormData,
 }: {
@@ -785,9 +784,9 @@ function Step3ProductAttach({
 }) {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<typeof SAMPLE_PRODUCTS>([])
+  const isOptional = formData.broadcastType === 'vod'
 
   const handleSearch = () => {
-    // 실제로는 API 호출
     setSearchResults(SAMPLE_PRODUCTS.filter(p =>
       p.name.toLowerCase().includes(searchQuery.toLowerCase())
     ))
@@ -812,32 +811,32 @@ function Step3ProductAttach({
   return (
     <div className="max-w-4xl mx-auto">
       <h2 className="text-xl font-semibold text-center mb-2">Product Attach</h2>
-      <p className="text-[var(--muted)] text-center mb-8">Attach products from your shopping mall to your stream</p>
+      <p className="text-[var(--muted)] text-center mb-2">
+        Attach products from your shopping mall to your stream
+      </p>
+      {isOptional && (
+        <p className="text-center text-sm text-[var(--secondary)] mb-8">
+          Products are optional for VOD streaming
+        </p>
+      )}
 
       <div className="grid grid-cols-2 gap-8">
         {/* Left: Search */}
         <div className="space-y-4">
-          {/* Shopping Mall Select */}
           <div>
             <label className="block text-sm font-medium mb-2">Shopping Mall</label>
-            <div className="relative">
-              <select
-                value={formData.shoppingMall}
-                onChange={e => setFormData(prev => ({ ...prev, shoppingMall: e.target.value }))}
-                className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)] appearance-none"
-              >
-                <option value="">Select shopping mall</option>
-                {SHOPPING_MALLS.map(mall => (
-                  <option key={mall.id} value={mall.id}>
-                    {mall.name}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--muted)] pointer-events-none" />
-            </div>
+            <select
+              value={formData.shoppingMall}
+              onChange={e => setFormData(prev => ({ ...prev, shoppingMall: e.target.value }))}
+              className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
+            >
+              <option value="">Select shopping mall</option>
+              {SHOPPING_MALLS.map(mall => (
+                <option key={mall.id} value={mall.id}>{mall.name}</option>
+              ))}
+            </select>
           </div>
 
-          {/* Search */}
           <div>
             <label className="block text-sm font-medium mb-2">Search Products</label>
             <div className="flex gap-2">
@@ -860,20 +859,16 @@ function Step3ProductAttach({
             </div>
           </div>
 
-          {/* Search Results */}
           <div className="space-y-2 max-h-80 overflow-y-auto">
             {searchResults.map(product => (
-              <div
-                key={product.id}
-                className="flex items-center gap-3 p-3 bg-[var(--background)] rounded-lg"
-              >
+              <div key={product.id} className="flex items-center gap-3 p-3 bg-[var(--background)] rounded-lg">
                 <div className="w-12 h-12 bg-[var(--border-color)] rounded-lg flex items-center justify-center">
                   <ImageIcon size={20} className="text-[var(--muted)]" />
                 </div>
                 <div className="flex-1">
                   <p className="text-sm font-medium">{product.name}</p>
                   <p className="text-xs text-[var(--muted)]">
-                    Qty: {product.quantity} | ₩{product.price.toLocaleString()}
+                    Qty: {product.quantity} | ${(product.price / 1000).toFixed(2)}
                   </p>
                 </div>
                 <button
@@ -905,17 +900,14 @@ function Step3ProductAttach({
             ) : (
               <div className="space-y-2">
                 {formData.attachedProducts.map(product => (
-                  <div
-                    key={product.id}
-                    className="flex items-center gap-3 p-3 bg-[var(--background)] rounded-lg"
-                  >
+                  <div key={product.id} className="flex items-center gap-3 p-3 bg-[var(--background)] rounded-lg">
                     <div className="w-12 h-12 bg-[var(--border-color)] rounded-lg flex items-center justify-center">
                       <ImageIcon size={20} className="text-[var(--muted)]" />
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium">{product.name}</p>
                       <p className="text-xs text-[var(--muted)]">
-                        Qty: {product.quantity} | ₩{product.price.toLocaleString()}
+                        Qty: {product.quantity} | ${(product.price / 1000).toFixed(2)}
                       </p>
                     </div>
                     <button
@@ -935,8 +927,8 @@ function Step3ProductAttach({
   )
 }
 
-// Step 4: Schedule
-function Step4Schedule({
+// Step 5: Schedule
+function Step5Schedule({
   formData,
   setFormData,
 }: {
@@ -949,7 +941,6 @@ function Step4Schedule({
       <p className="text-[var(--muted)] text-center mb-8">Set when your stream will go live</p>
 
       <div className="grid grid-cols-2 gap-8">
-        {/* Left: Calendar */}
         <div>
           <label className="block text-sm font-medium mb-2">Select Date</label>
           <div className="border border-[var(--border-color)] rounded-lg p-4 bg-[var(--background)]">
@@ -962,59 +953,33 @@ function Step4Schedule({
           </div>
         </div>
 
-        {/* Right: Time & Timezone */}
         <div className="space-y-4">
-          {/* Start Time */}
           <div>
-            <label className="block text-sm font-medium mb-2">Start Date & Time</label>
-            <div className="grid grid-cols-2 gap-2">
-              <div className="relative">
-                <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" />
-                <input
-                  type="date"
-                  value={formData.scheduledDate}
-                  onChange={e => setFormData(prev => ({ ...prev, scheduledDate: e.target.value }))}
-                  className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
-                />
-              </div>
-              <div className="relative">
-                <Clock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" />
-                <input
-                  type="time"
-                  value={formData.startTime}
-                  onChange={e => setFormData(prev => ({ ...prev, startTime: e.target.value }))}
-                  className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
-                />
-              </div>
+            <label className="block text-sm font-medium mb-2">Start Time</label>
+            <div className="relative">
+              <Clock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" />
+              <input
+                type="time"
+                value={formData.startTime}
+                onChange={e => setFormData(prev => ({ ...prev, startTime: e.target.value }))}
+                className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
+              />
             </div>
           </div>
 
-          {/* End Time */}
           <div>
-            <label className="block text-sm font-medium mb-2">End Date & Time</label>
-            <div className="grid grid-cols-2 gap-2">
-              <div className="relative">
-                <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" />
-                <input
-                  type="date"
-                  value={formData.scheduledDate}
-                  className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
-                  readOnly
-                />
-              </div>
-              <div className="relative">
-                <Clock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" />
-                <input
-                  type="time"
-                  value={formData.endTime}
-                  onChange={e => setFormData(prev => ({ ...prev, endTime: e.target.value }))}
-                  className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
-                />
-              </div>
+            <label className="block text-sm font-medium mb-2">End Time</label>
+            <div className="relative">
+              <Clock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]" />
+              <input
+                type="time"
+                value={formData.endTime}
+                onChange={e => setFormData(prev => ({ ...prev, endTime: e.target.value }))}
+                className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
+              />
             </div>
           </div>
 
-          {/* Timezone */}
           <div>
             <label className="block text-sm font-medium mb-2">Timezone</label>
             <div className="relative">
@@ -1022,15 +987,12 @@ function Step4Schedule({
               <select
                 value={formData.timezone}
                 onChange={e => setFormData(prev => ({ ...prev, timezone: e.target.value }))}
-                className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)] appearance-none"
+                className="w-full pl-10 pr-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm focus:outline-none focus:border-[var(--secondary)]"
               >
                 {TIMEZONES.map(tz => (
-                  <option key={tz.value} value={tz.value}>
-                    {tz.label}
-                  </option>
+                  <option key={tz.value} value={tz.value}>{tz.label}</option>
                 ))}
               </select>
-              <ChevronDown size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--muted)] pointer-events-none" />
             </div>
           </div>
         </div>
@@ -1038,8 +1000,12 @@ function Step4Schedule({
 
       {/* Summary */}
       <div className="mt-8 p-4 bg-[var(--background)] rounded-lg">
-        <h3 className="text-sm font-medium mb-2">Summary</h3>
+        <h3 className="text-sm font-medium mb-3">Summary</h3>
         <div className="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <span className="text-[var(--muted)]">Broadcast Type:</span>{' '}
+            <span className="font-medium capitalize">{formData.broadcastType}</span>
+          </div>
           <div>
             <span className="text-[var(--muted)]">Stream Type:</span>{' '}
             <span className="font-medium">{formData.streamType === 'live' ? 'Live Stream' : 'Pre-recorded'}</span>
@@ -1052,10 +1018,10 @@ function Step4Schedule({
             <span className="text-[var(--muted)]">Products:</span>{' '}
             <span className="font-medium">{formData.attachedProducts.length} attached</span>
           </div>
-          <div>
+          <div className="col-span-2">
             <span className="text-[var(--muted)]">Scheduled:</span>{' '}
             <span className="font-medium">
-              {formData.scheduledDate} {formData.startTime}
+              {formData.scheduledDate} {formData.startTime} - {formData.endTime}
             </span>
           </div>
         </div>
@@ -1068,13 +1034,14 @@ export default function NewStreamPage() {
   const router = useRouter()
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState<StreamFormData>({
+    broadcastType: null,
     streamType: null,
     videoFile: null,
     channels: [],
     platforms: [],
     platformSettings: {},
     title: '',
-    type: '',
+    category: '',
     description: '',
     thumbnail: null,
     broadcaster: '',
@@ -1087,29 +1054,30 @@ export default function NewStreamPage() {
     timezone: 'Asia/Seoul',
   })
 
-  const canProceed = () => {
-    switch (currentStep) {
-      case 1:
-        return formData.streamType !== null
-      case 2:
-        // Pre-recorded는 비디오 파일 필수
-        const hasVideo = formData.streamType === 'live' || formData.videoFile !== null
-        const hasDestination = formData.platforms.length > 0 || formData.channels.length > 0
-        return formData.title.trim() !== '' && hasVideo && hasDestination
-      case 3:
-        return true // Products are optional
-      case 4:
-        return formData.scheduledDate !== '' && formData.startTime !== ''
-      default:
-        return false
+  // Get total steps based on broadcast type
+  const getTotalSteps = () => {
+    if (formData.broadcastType === 'general') return 4 // Skip products
+    return 5
+  }
+
+  // Get actual step number (accounting for skipped product step)
+  const getActualStep = (logicalStep: number) => {
+    if (formData.broadcastType === 'general' && logicalStep >= 4) {
+      return logicalStep + 1 // Skip product step for general broadcast
     }
+    return logicalStep
+  }
+
+  const canProceed = () => {
+    // Temporarily allow all steps for testing UI
+    return true
   }
 
   const handleNext = () => {
-    if (currentStep < 4) {
+    const totalSteps = getTotalSteps()
+    if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1)
     } else {
-      // Submit and redirect
       console.log('Creating stream:', formData)
       router.push('/schedule')
     }
@@ -1122,6 +1090,21 @@ export default function NewStreamPage() {
       router.push('/schedule')
     }
   }
+
+  // Render current step content
+  const renderStepContent = () => {
+    const actualStep = getActualStep(currentStep)
+    switch (actualStep) {
+      case 1: return <Step1BroadcastType formData={formData} setFormData={setFormData} />
+      case 2: return <Step2StreamType formData={formData} setFormData={setFormData} />
+      case 3: return <Step3StreamDetail formData={formData} setFormData={setFormData} />
+      case 4: return <Step4ProductAttach formData={formData} setFormData={setFormData} />
+      case 5: return <Step5Schedule formData={formData} setFormData={setFormData} />
+      default: return null
+    }
+  }
+
+  const totalSteps = getTotalSteps()
 
   return (
     <div className="min-h-screen">
@@ -1140,14 +1123,11 @@ export default function NewStreamPage() {
         </div>
 
         {/* Step Indicator */}
-        <StepIndicator currentStep={currentStep} totalSteps={4} />
+        <StepIndicator currentStep={currentStep} broadcastType={formData.broadcastType} />
 
         {/* Step Content */}
         <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-8 mb-6">
-          {currentStep === 1 && <Step1StreamType formData={formData} setFormData={setFormData} />}
-          {currentStep === 2 && <Step2StreamDetail formData={formData} setFormData={setFormData} />}
-          {currentStep === 3 && <Step3ProductAttach formData={formData} setFormData={setFormData} />}
-          {currentStep === 4 && <Step4Schedule formData={formData} setFormData={setFormData} />}
+          {renderStepContent()}
         </div>
 
         {/* Navigation Buttons */}
@@ -1161,11 +1141,10 @@ export default function NewStreamPage() {
           </button>
           <button
             onClick={handleNext}
-            disabled={!canProceed()}
-            className="px-6 py-2 bg-[var(--secondary)] text-white rounded-lg text-sm font-medium hover:bg-[#7c4fe0] transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-2 bg-[var(--secondary)] text-white rounded-lg text-sm font-medium hover:bg-[#7c4fe0] transition-colors flex items-center gap-2"
           >
-            {currentStep === 4 ? 'Create Stream' : 'Next'}
-            {currentStep < 4 && <ArrowRight size={16} />}
+            {currentStep === totalSteps ? 'Create Stream' : 'Next'}
+            {currentStep < totalSteps && <ArrowRight size={16} />}
           </button>
         </div>
       </div>

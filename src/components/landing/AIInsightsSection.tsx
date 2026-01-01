@@ -42,7 +42,7 @@ export function AIInsightsSection() {
             Not just creation — performance optimization
           </h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            XCaster doesn&apos;t just help you create. It learns from your data
+            MetaCast doesn&apos;t just help you create. It learns from your data
             and continuously improves your results.
           </p>
         </div>

@@ -79,7 +79,7 @@ export function UseCasesSection() {
             Built for every broadcaster
           </h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            Whether you&apos;re a solo creator or enterprise team, XCaster scales with your needs.
+            Whether you&apos;re a solo creator or enterprise team, MetaCast scales with your needs.
           </p>
         </div>
 

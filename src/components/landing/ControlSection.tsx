@@ -57,7 +57,7 @@ export function ControlSection() {
             Choose how much you want to control
           </h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            From fully automated to hands-on editing — XCaster adapts to your workflow.
+            From fully automated to hands-on editing — MetaCast adapts to your workflow.
             Start fast, refine later.
           </p>
         </div>

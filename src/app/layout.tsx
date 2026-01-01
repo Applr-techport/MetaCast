@@ -19,8 +19,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "XCaster - AI 숏폼 생성 & 라이브 스트리밍",
-  description: "AI 기반 숏폼 비디오 자동 생성 및 멀티 플랫폼 라이브 스트리밍 SaaS",
+  title: "MetaCast - AI Live Commerce Platform",
+  description: "AI-powered live commerce and multi-platform streaming SaaS",
 };
 
 export default function RootLayout({

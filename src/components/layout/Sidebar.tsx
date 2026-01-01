@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils/cn'
 import {
@@ -13,14 +14,17 @@ import {
   Settings,
   HelpCircle,
   Code2,
+  Sparkles,
 } from 'lucide-react'
 import { useState } from 'react'
+import { UpgradePlanModal } from './UpgradePlanModal'
 
 interface NavItem {
   label: string
   href?: string
   icon: React.ReactNode
-  badge?: number
+  badge?: number | string
+  badgeColor?: 'purple' | 'default'
   children?: NavItem[]
 }
 
@@ -29,6 +33,13 @@ const navigation: NavItem[] = [
     label: 'Dashboard',
     href: '/dashboard',
     icon: <LayoutDashboard size={20} />,
+  },
+  {
+    label: 'AI Studio',
+    href: '/ai-studio',
+    icon: <Sparkles size={20} />,
+    badge: 'New',
+    badgeColor: 'purple',
   },
   {
     label: 'Schedule Streams',
@@ -100,7 +111,11 @@ function NavItemComponent({ item }: { item: NavItem }) {
         <span
           className={cn(
             'px-2 py-0.5 text-xs rounded-full font-medium',
-            isActive ? 'bg-white/20 text-white' : 'bg-[var(--secondary)] text-white'
+            isActive
+              ? 'bg-white/20 text-white'
+              : item.badgeColor === 'purple'
+                ? 'bg-[var(--secondary)]/10 text-[var(--secondary)]'
+                : 'bg-[var(--secondary)] text-white'
           )}
         >
           {item.badge}
@@ -111,42 +126,62 @@ function NavItemComponent({ item }: { item: NavItem }) {
 }
 
 export function Sidebar() {
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false)
+
   return (
-    <aside className="w-60 h-screen bg-[var(--sidebar-bg)] border-r border-[var(--border-color)] flex flex-col fixed left-0 top-0 z-40">
-      {/* 로고 */}
-      <div className="p-4">
-        <Link href="/dashboard" className="flex items-center gap-2">
-          <span className="text-xl font-bold text-[var(--foreground)]">XCaster</span>
-        </Link>
-      </div>
-
-      {/* 메인 네비게이션 */}
-      <nav className="flex-1 px-3 space-y-1 overflow-y-auto">
-        {navigation.map((item) => (
-          <NavItemComponent key={item.label} item={item} />
-        ))}
-      </nav>
-
-      {/* Upgrade Plan */}
-      <div className="px-3 pb-2">
-        <button className="w-full px-4 py-3 bg-white border-2 border-[var(--secondary)] text-[var(--secondary)] rounded-lg text-sm font-semibold hover:bg-[var(--secondary)]/5 transition-colors">
-          UPGRADE PLAN
-        </button>
-      </div>
-
-      {/* 하단 네비게이션 */}
-      <div className="px-3 pb-2 space-y-1">
-        {bottomNavigation.map((item) => (
-          <NavItemComponent key={item.label} item={item} />
-        ))}
-      </div>
-
-      {/* 버전 표시 */}
-      <div className="px-3 pb-4">
-        <div className="text-[10px] text-[var(--muted)] font-mono">
-          v1.0.0
+    <>
+      <aside className="w-60 h-screen bg-[var(--sidebar-bg)] border-r border-[var(--border-color)] flex flex-col fixed left-0 top-0 z-40">
+        {/* Logo */}
+        <div className="p-4">
+          <Link href="/dashboard" className="flex items-center">
+            <Image
+              src="/metacast.png"
+              alt="MetaCast"
+              width={180}
+              height={36}
+              className="h-9 w-auto"
+              priority
+            />
+          </Link>
         </div>
-      </div>
-    </aside>
+
+        {/* Main Navigation */}
+        <nav className="flex-1 px-3 space-y-1 overflow-y-auto">
+          {navigation.map((item) => (
+            <NavItemComponent key={item.label} item={item} />
+          ))}
+        </nav>
+
+        {/* Upgrade Plan */}
+        <div className="px-3 pb-2">
+          <button
+            onClick={() => setShowUpgradeModal(true)}
+            className="w-full px-4 py-2.5 bg-white border-2 border-[var(--secondary)] text-[var(--secondary)] rounded-lg text-sm font-semibold hover:bg-[var(--secondary)]/5 transition-colors"
+          >
+            UPGRADE PLAN
+          </button>
+        </div>
+
+        {/* Bottom Navigation */}
+        <div className="px-3 pb-2 space-y-1">
+          {bottomNavigation.map((item) => (
+            <NavItemComponent key={item.label} item={item} />
+          ))}
+        </div>
+
+        {/* Version */}
+        <div className="px-3 pb-4">
+          <div className="text-[10px] text-[var(--muted)] font-mono">
+            v1.0.0
+          </div>
+        </div>
+      </aside>
+
+      {/* Upgrade Plan Modal */}
+      <UpgradePlanModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+      />
+    </>
   )
 }

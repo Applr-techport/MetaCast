@@ -25,6 +25,27 @@ import {
   ExternalLink,
 } from 'lucide-react'
 
+// Schedule Header Actions
+function ScheduleHeaderActions() {
+  return (
+    <div className="flex items-center gap-3">
+      {/* Upcoming Count */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--background)] rounded-lg border border-[var(--border-color)]">
+        <CalendarIcon size={14} className="text-[var(--muted)]" />
+        <span className="text-sm text-[var(--foreground)]">6 upcoming</span>
+      </div>
+      {/* New Stream Button */}
+      <Link
+        href="/schedule/new"
+        className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-lg text-sm font-medium transition-colors"
+      >
+        <Plus size={18} />
+        <span>New Stream</span>
+      </Link>
+    </div>
+  )
+}
+
 // 사용 가능한 플랫폼 목록
 const AVAILABLE_PLATFORMS = [
   { id: 'youtube', name: 'YouTube', icon: 'youtube', color: 'text-red-500' },
@@ -1054,7 +1075,7 @@ const initialSchedules: ScheduleDetail[] = [
     broadcaster: '@nighthost',
     deleteAfterLive: false,
     channels: [
-      { name: 'XCaster App', url: 'rtmp://xcaster.app/live/nighttalk' },
+      { name: 'MetaCast App', url: 'rtmp://metacast.app/live/nighttalk' },
     ],
     platforms: [
       { id: 'youtube', name: 'YouTube', icon: 'youtube' },
@@ -1119,7 +1140,7 @@ export default function SchedulePage() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header actions={<ScheduleHeaderActions />} />
 
       <div className="p-6">
         <div className="flex gap-6">

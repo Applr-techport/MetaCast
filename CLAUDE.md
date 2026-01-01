@@ -561,23 +561,49 @@ DELETE /api/projects/:id      - 프로젝트 삭제
 
 ## Important Project Rules (엄수 사항)
 
-### 메뉴 구조
-- **사용자 허락 없이 임의로 메뉴 추가 금지**
-- 메뉴 변경 시 반드시 사전 논의
+### ⚠️ UI 작성 전 필수 확인 - CRITICAL
+**UI/컴포넌트 작성 시 반드시 `.claude/skills/metacast-ui/SKILL.md` 참조!**
 
-### 디자인 퀄리티
-- **이모지 사용 금지** (퀄리티 저하)
-- Lucide React 아이콘만 사용
+### 절대 금지 (NEVER DO)
+1. ❌ **이모지 사용 금지** - UI에 이모지 절대 사용하지 않음
+2. ❌ **하드코딩 색상 금지** - CSS 변수만 사용
+3. ❌ **보라색 외 장식 색상 금지** - `--secondary` (#8b5cf6)만 포인트로 사용
 
-### 아이콘 컨벤션
-- Live Stream: `Video` (캠코더 아이콘)
-- VOD/Pre-recorded: `Play` (재생 아이콘)
-- Product Stream: `Package` (패키지 아이콘)
+### Language Rules (언어 규칙) - CRITICAL
+- **ALL UI TEXT MUST BE IN ENGLISH** - No Korean text in UI components
+- All labels, buttons, placeholders, messages, titles must be in English
+- Comments in code can be in any language, but UI-facing text = English only
+- This applies to: page titles, descriptions, button labels, form labels, error messages, tooltips, etc.
 
-### 코드 퀄리티
-- 200라인 초과 파일 즉시 분리
-- TypeScript strict 모드 유지
-- 모든 함수에 JSDoc 작성
+### Color Rules (색상 규칙) - CRITICAL
+- **USE ONLY PURPLE (--secondary: #8b5cf6) as the accent color**
+- Do NOT use other colors like blue, green, orange, pink for decorative purposes
+- Exception: Status indicators only
+  - `--accent` (red): LIVE status only
+  - `--success` (green): Success/Connected status only
+  - `--warning` (orange): Warning status only
+- All other UI elements: Use `--secondary` (purple), `--primary` (black), `--muted` (gray)
+- Do NOT use hardcoded colors like `#3b82f6` (blue), `#22c55e` (green) for decorative UI
+- Progress bars, highlights, badges, icons backgrounds = PURPLE only
+
+### Menu Structure (메뉴 구조)
+- **Do NOT add new menu items without user permission**
+- Discuss menu changes before implementation
+
+### Design Quality (디자인 퀄리티)
+- **No emojis** - Reduces UI quality
+- Use only Lucide React icons
+- Every dashboard page MUST have `<Header />` component with page-specific actions
+
+### Icon Conventions (아이콘 컨벤션)
+- Live Stream: `Video` (camcorder icon)
+- VOD/Pre-recorded: `Play` (play icon)
+- Product Stream: `Package` (package icon)
+
+### Code Quality (코드 퀄리티)
+- Split files exceeding 200 lines immediately
+- Maintain TypeScript strict mode
+- Write JSDoc for all functions
 
 ---
 

@@ -16,7 +16,26 @@ import {
   MoreVertical,
   AlertCircle,
   Tv,
+  Link2,
 } from 'lucide-react'
+
+// Channels Header Actions
+function ChannelsHeaderActions() {
+  return (
+    <div className="flex items-center gap-3">
+      {/* Connected Count */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--success)]/10 rounded-lg">
+        <Check size={14} className="text-[var(--success)]" />
+        <span className="text-sm font-medium text-[var(--success)]">3 connected</span>
+      </div>
+      {/* Add Channel Button */}
+      <button className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-lg text-sm font-medium transition-colors">
+        <Link2 size={18} />
+        <span>Add Channel</span>
+      </button>
+    </div>
+  )
+}
 
 interface Channel {
   id: string
@@ -35,7 +54,7 @@ const connectedChannels: Channel[] = [
   {
     id: '1',
     platform: 'youtube',
-    name: 'XCaster Official',
+    name: 'MetaCast Official',
     handle: '@xcaster_official',
     followers: '125K',
     connected: true,
@@ -45,7 +64,7 @@ const connectedChannels: Channel[] = [
   {
     id: '2',
     platform: 'instagram',
-    name: 'XCaster',
+    name: 'MetaCast',
     handle: '@xcaster',
     followers: '89K',
     connected: true,
@@ -55,7 +74,7 @@ const connectedChannels: Channel[] = [
   {
     id: '3',
     platform: 'facebook',
-    name: 'XCaster Page',
+    name: 'MetaCast Page',
     handle: '/xcaster',
     followers: '45K',
     connected: true,
@@ -321,7 +340,7 @@ export default function ChannelsPage() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header actions={<ChannelsHeaderActions />} />
 
       <div className="p-6 max-w-4xl mx-auto">
         {/* 타이틀 */}

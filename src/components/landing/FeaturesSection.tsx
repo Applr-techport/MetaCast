@@ -28,7 +28,7 @@ export function FeaturesSection() {
     {
       icon: Calendar,
       title: 'Smart Scheduling',
-      description: 'Schedule streams in advance with timezone support. Set it and forget it - XCaster handles the rest.',
+      description: 'Schedule streams in advance with timezone support. Set it and forget it - MetaCast handles the rest.',
       highlight: 'Global timezone support',
       badge: null,
     },
@@ -60,7 +60,7 @@ export function FeaturesSection() {
             Everything you need to broadcast
           </h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            XCaster combines powerful features in one simple platform.
+            MetaCast combines powerful features in one simple platform.
             No technical expertise required.
           </p>
         </div>

@@ -91,9 +91,9 @@ function TextInputSection({
           <label className="block text-sm font-medium mb-2">Language</label>
           <select className="w-full px-4 py-3 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm">
             <option value="en">English</option>
-            <option value="ko">한국어</option>
-            <option value="ja">日本語</option>
-            <option value="zh">中文</option>
+            <option value="ko">Korean</option>
+            <option value="ja">Japanese</option>
+            <option value="zh">Chinese</option>
           </select>
         </div>
       </div>

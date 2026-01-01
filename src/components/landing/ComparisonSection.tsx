@@ -20,13 +20,13 @@ export function ComparisonSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="text-sm font-medium text-[var(--secondary)] mb-4 block">
-            Why XCaster
+            Why MetaCast
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             What makes us different
           </h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            Other tools do one thing well. XCaster does everything —
+            Other tools do one thing well. MetaCast does everything —
             from creation to distribution to optimization.
           </p>
         </div>
@@ -40,7 +40,7 @@ export function ComparisonSection() {
                 <span className="text-sm font-medium text-[var(--muted)]">Feature</span>
               </div>
               <div className="p-4 text-center border-x border-[var(--border-color)]">
-                <span className="text-sm font-bold text-[var(--secondary)]">XCaster</span>
+                <span className="text-sm font-bold text-[var(--secondary)]">MetaCast</span>
               </div>
               <div className="p-4 text-center">
                 <span className="text-sm font-medium text-[var(--muted)]">Others</span>
@@ -85,7 +85,7 @@ export function ComparisonSection() {
         <div className="max-w-3xl mx-auto mt-8">
           <div className="bg-[var(--secondary)]/5 rounded-xl p-6 border border-[var(--secondary)]/20">
             <p className="text-center text-sm">
-              <span className="font-semibold text-[var(--secondary)]">XCaster&apos;s unique advantage:</span>{' '}
+              <span className="font-semibold text-[var(--secondary)]">MetaCast&apos;s unique advantage:</span>{' '}
               <span className="text-[var(--muted)]">
                 End-to-end solution — create, optimize, distribute, and analyze all in one platform.
               </span>

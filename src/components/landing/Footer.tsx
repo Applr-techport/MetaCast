@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export function Footer() {
   const footerLinks = {
     'Learn More': [
@@ -15,7 +17,7 @@ export function Footer() {
       { label: 'Privacy Policy', href: '#' },
     ],
     'Contact Us': [
-      { label: 'support@xcaster.io', href: 'mailto:support@xcaster.io' },
+      { label: 'support@metacast.io', href: 'mailto:support@metacast.io' },
       { label: 'Seoul, Korea', href: '#' },
     ],
   }
@@ -34,10 +36,13 @@ export function Footer() {
           {/* Logo & Description */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[var(--secondary)] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">X</span>
-              </div>
-              <span className="font-bold text-xl">XCaster</span>
+              <Image
+                src="/metacast.png"
+                alt="MetaCast"
+                width={150}
+                height={30}
+                className="h-7 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-white/60 text-sm mb-6">
               AI-powered multi-channel video automation platform
@@ -82,7 +87,7 @@ export function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <p className="text-white/40 text-sm">
-              2024 XCaster Inc. All rights reserved.
+              2024 MetaCast Inc. All rights reserved.
             </p>
             <span className="text-white/20 text-sm">|</span>
             <span className="text-white/40 text-xs font-mono">v1.1.0</span>

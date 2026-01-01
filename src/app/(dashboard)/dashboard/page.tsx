@@ -1,8 +1,29 @@
 'use client'
 
 import { Header } from '@/components/layout/Header'
-import { Play, Package, Volume2, Video } from 'lucide-react'
+import { NewStreamButton } from '@/components/layout/NewStreamButton'
+import { Play, Package, Volume2, Video, Radio, Users, Sparkles, Bot, Film, Wand2, ArrowRight, Zap } from 'lucide-react'
 import Link from 'next/link'
+
+// Dashboard Header Actions
+function DashboardHeaderActions() {
+  return (
+    <div className="flex items-center gap-4">
+      {/* Live Status */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--accent)]/10 rounded-lg">
+        <Radio size={14} className="text-[var(--accent)] animate-pulse" />
+        <span className="text-sm font-medium text-[var(--accent)]">2 Live</span>
+      </div>
+      {/* Today's Viewers */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--background)] rounded-lg border border-[var(--border-color)]">
+        <Users size={14} className="text-[var(--muted)]" />
+        <span className="text-sm text-[var(--foreground)]">12.4K viewers today</span>
+      </div>
+      {/* New Stream Button */}
+      <NewStreamButton />
+    </div>
+  )
+}
 
 // 스트림 카드 컴포넌트
 function StreamCard({
@@ -338,14 +359,101 @@ function NetworkChart() {
   )
 }
 
+// AI Studio Quick Access
+function AIStudioQuickAccess() {
+  const aiFeatures = [
+    {
+      icon: Bot,
+      title: 'AI Co-Host',
+      description: 'Stream with AI assistance',
+      href: '/ai-studio/live-stream',
+      badge: 'Popular',
+    },
+    {
+      icon: Film,
+      title: 'Video Generator',
+      description: 'Create videos with AI',
+      href: '/ai-studio/video-generator',
+    },
+    {
+      icon: Wand2,
+      title: 'AI Tools',
+      description: 'Thumbnails, captions & more',
+      href: '/ai-studio/tools',
+    },
+  ]
+
+  return (
+    <div className="bg-gradient-to-r from-[var(--secondary)]/5 to-[var(--secondary)]/10 border border-[var(--secondary)]/20 rounded-xl p-5">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
+            <Sparkles size={20} className="text-[var(--secondary)]" />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">AI Studio</h2>
+            <p className="text-sm text-[var(--muted)]">Enhance your content with AI</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--secondary)]/10 rounded-lg">
+            <Zap size={14} className="text-[var(--secondary)]" />
+            <span className="text-sm font-medium text-[var(--secondary)]">68 credits</span>
+          </div>
+          <Link
+            href="/ai-studio"
+            className="text-sm text-[var(--secondary)] hover:underline flex items-center gap-1"
+          >
+            View All <ArrowRight size={14} />
+          </Link>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-4">
+        {aiFeatures.map((feature) => {
+          const Icon = feature.icon
+          return (
+            <Link
+              key={feature.title}
+              href={feature.href}
+              className="group bg-[var(--card-bg)] rounded-lg p-4 hover:border-[var(--secondary)] border border-transparent transition-all"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
+                  <Icon size={18} className="text-[var(--secondary)]" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-sm group-hover:text-[var(--secondary)] transition-colors">
+                      {feature.title}
+                    </span>
+                    {feature.badge && (
+                      <span className="px-1.5 py-0.5 bg-[var(--secondary)]/10 text-[var(--secondary)] text-[10px] font-medium rounded">
+                        {feature.badge}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-[var(--muted)]">{feature.description}</p>
+                </div>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 export default function DashboardPage() {
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header actions={<DashboardHeaderActions />} />
 
       <div className="p-6 space-y-8">
         {/* 타이틀 */}
         <h1 className="text-2xl font-bold">Dashboard</h1>
+
+        {/* AI Studio Quick Access */}
+        <AIStudioQuickAccess />
 
         {/* Stream List */}
         <section>

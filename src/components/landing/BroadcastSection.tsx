@@ -33,7 +33,7 @@ export function BroadcastSection() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Broadcast Application</h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            Save time and effort. Focus on creating powerful videos on XCaster Live.
+            Save time and effort. Focus on creating powerful videos on MetaCast Live.
           </p>
         </div>
 

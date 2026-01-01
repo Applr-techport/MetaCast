@@ -1,4 +1,4 @@
--- XCaster Database Schema
+-- MetaCast Database Schema
 -- Supabase에서 SQL Editor로 실행하세요
 
 -- 사용자 프로필

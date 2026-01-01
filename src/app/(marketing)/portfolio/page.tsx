@@ -82,7 +82,7 @@ export default function PortfolioPage() {
               Our Portfolio
             </h1>
             <p className="text-lg text-[var(--muted)] max-w-2xl mx-auto">
-              See how businesses are using XCaster to create amazing video content
+              See how businesses are using MetaCast to create amazing video content
             </p>
           </div>
 
@@ -153,7 +153,7 @@ export default function PortfolioPage() {
           <div className="text-center mt-16 p-12 bg-[var(--background)] rounded-2xl">
             <h2 className="text-2xl font-bold mb-4">Ready to create your success story?</h2>
             <p className="text-[var(--muted)] mb-6">
-              Join thousands of creators and businesses using XCaster
+              Join thousands of creators and businesses using MetaCast
             </p>
             <a
               href="/signup"

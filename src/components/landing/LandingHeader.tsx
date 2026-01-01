@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 export function LandingHeader() {
@@ -20,11 +21,15 @@ export function LandingHeader() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[var(--secondary)] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">X</span>
-            </div>
-            <span className="font-bold text-xl">XCaster</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/metacast.png"
+              alt="MetaCast"
+              width={160}
+              height={32}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

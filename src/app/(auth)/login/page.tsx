@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
@@ -25,11 +26,15 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 mb-8">
-            <div className="w-10 h-10 bg-[var(--secondary)] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">X</span>
-            </div>
-            <span className="font-bold text-2xl">XCaster</span>
+          <Link href="/" className="flex items-center mb-8">
+            <Image
+              src="/metacast.png"
+              alt="MetaCast"
+              width={180}
+              height={36}
+              className="h-9 w-auto"
+              priority
+            />
           </Link>
 
           {/* Title */}
@@ -138,7 +143,7 @@ export default function LoginPage() {
         <div className="text-white text-center max-w-md">
           <h2 className="text-3xl font-bold mb-4">Start streaming in minutes</h2>
           <p className="text-white/80">
-            Create AI-powered videos and broadcast to multiple platforms simultaneously with XCaster.
+            Create AI-powered videos and broadcast to multiple platforms simultaneously with MetaCast.
           </p>
         </div>
       </div>

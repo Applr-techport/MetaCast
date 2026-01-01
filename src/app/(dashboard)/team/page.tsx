@@ -3,6 +3,24 @@
 import { Header } from '@/components/layout/Header'
 import { Users, Plus, MoreVertical } from 'lucide-react'
 
+// Team Header Actions
+function TeamHeaderActions() {
+  return (
+    <div className="flex items-center gap-3">
+      {/* Member Count */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--background)] rounded-lg border border-[var(--border-color)]">
+        <Users size={14} className="text-[var(--muted)]" />
+        <span className="text-sm text-[var(--foreground)]">4 members</span>
+      </div>
+      {/* Invite Member Button */}
+      <button className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-lg text-sm font-medium transition-colors">
+        <Plus size={18} />
+        <span>Invite Member</span>
+      </button>
+    </div>
+  )
+}
+
 export default function TeamPage() {
   const members = [
     { name: 'Lee Min Ho', email: 'lee@xcaster.com', role: 'Owner', avatar: '', status: 'active' },
@@ -13,17 +31,11 @@ export default function TeamPage() {
 
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header actions={<TeamHeaderActions />} />
       <div className="p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <Users size={28} className="text-[var(--secondary)]" />
-            <h1 className="text-2xl font-bold">Team Members</h1>
-          </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary)] text-white rounded-lg text-sm font-medium">
-            <Plus size={18} />
-            Invite Member
-          </button>
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold">Team Members</h1>
+          <p className="text-[var(--muted)] mt-1">Manage your team and permissions</p>
         </div>
 
         <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl overflow-hidden">

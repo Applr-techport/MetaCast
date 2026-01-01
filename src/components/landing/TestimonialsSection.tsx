@@ -19,7 +19,7 @@ export function TestimonialsSection() {
       highlight: 'Brand learning',
     },
     {
-      quote: 'I was skeptical about AI content, but XCaster lets me review everything before publishing. Full control with AI speed.',
+      quote: 'I was skeptical about AI content, but MetaCast lets me review everything before publishing. Full control with AI speed.',
       name: 'James Park',
       role: 'Marketing Agency CEO',
       rating: 5,
@@ -61,7 +61,7 @@ export function TestimonialsSection() {
             Loved by creators worldwide
           </h2>
           <p className="text-[var(--muted)] max-w-2xl mx-auto">
-            See what our users have to say about their experience with XCaster.
+            See what our users have to say about their experience with MetaCast.
           </p>
         </div>
 

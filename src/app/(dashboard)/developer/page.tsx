@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Header } from '@/components/layout/Header'
-import { Key, Webhook, Book, Code2, Copy, Eye, EyeOff, Plus, Trash2 } from 'lucide-react'
+import { Key, Webhook, Book, Code2, Copy, Eye, EyeOff, Plus, Trash2, ExternalLink } from 'lucide-react'
 
 const TABS = [
   { id: 'api-keys', label: 'API Keys', icon: Key },
@@ -10,12 +10,33 @@ const TABS = [
   { id: 'docs', label: 'Documentation', icon: Book },
 ]
 
+// Developer Header Actions
+function DeveloperHeaderActions() {
+  return (
+    <div className="flex items-center gap-3">
+      {/* API Status */}
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--success)]/10 rounded-lg">
+        <div className="w-2 h-2 bg-[var(--success)] rounded-full" />
+        <span className="text-sm font-medium text-[var(--success)]">API Operational</span>
+      </div>
+      {/* API Docs Button */}
+      <a
+        href="#"
+        className="flex items-center gap-2 px-4 py-2 bg-[var(--secondary)] hover:bg-[#7c4fe0] text-white rounded-lg text-sm font-medium transition-colors"
+      >
+        <ExternalLink size={18} />
+        <span>API Docs</span>
+      </a>
+    </div>
+  )
+}
+
 export default function DeveloperPage() {
   const [activeTab, setActiveTab] = useState('api-keys')
 
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header actions={<DeveloperHeaderActions />} />
       <div className="p-6">
         <div className="flex items-center gap-3 mb-6">
           <Code2 size={28} className="text-[var(--secondary)]" />
@@ -138,7 +159,7 @@ function WebhooksSection() {
 
 function DocsSection() {
   const docs = [
-    { title: 'Getting Started', desc: 'Learn the basics of XCaster API' },
+    { title: 'Getting Started', desc: 'Learn the basics of MetaCast API' },
     { title: 'Authentication', desc: 'How to authenticate your requests' },
     { title: 'Streaming API', desc: 'Create and manage streams programmatically' },
     { title: 'Webhooks Guide', desc: 'Set up real-time event notifications' },
@@ -148,7 +169,7 @@ function DocsSection() {
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-semibold">Documentation</h2>
-        <p className="text-sm text-[var(--muted)]">Learn how to integrate with XCaster</p>
+        <p className="text-sm text-[var(--muted)]">Learn how to integrate with MetaCast</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">

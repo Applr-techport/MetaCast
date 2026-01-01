@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react'
 
@@ -25,7 +26,7 @@ export default function SignupPage() {
       {/* Left Side - Decoration */}
       <div className="hidden lg:flex flex-1 bg-gradient-to-br from-[var(--secondary)] to-[#6d28d9] items-center justify-center p-12">
         <div className="text-white text-center max-w-md">
-          <h2 className="text-3xl font-bold mb-4">Join XCaster today</h2>
+          <h2 className="text-3xl font-bold mb-4">Join MetaCast today</h2>
           <p className="text-white/80">
             Create your free account and start automating your video content across all platforms.
           </p>
@@ -36,11 +37,15 @@ export default function SignupPage() {
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 mb-8">
-            <div className="w-10 h-10 bg-[var(--secondary)] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">X</span>
-            </div>
-            <span className="font-bold text-2xl">XCaster</span>
+          <Link href="/" className="flex items-center mb-8">
+            <Image
+              src="/metacast.png"
+              alt="MetaCast"
+              width={180}
+              height={36}
+              className="h-9 w-auto"
+              priority
+            />
           </Link>
 
           {/* Title */}

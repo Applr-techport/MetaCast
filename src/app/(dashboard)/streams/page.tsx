@@ -78,7 +78,7 @@ const sampleStreams: Stream[] = [
   },
   {
     id: '5',
-    title: 'Tutorial: Getting Started with XCaster',
+    title: 'Tutorial: Getting Started with MetaCast',
     type: 'vod',
     isLive: false,
     duration: '18:30',

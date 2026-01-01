@@ -29,26 +29,26 @@ export function HeroSection() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--secondary)]/10 rounded-full mb-6">
               <Radio size={14} className="text-[var(--secondary)]" />
               <span className="text-xs font-medium text-[var(--secondary)]">
-                AI + Your Brand Identity
+                Content Automation Platform
               </span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 font-heading">
-              One Stream,{' '}
-              <span className="text-[var(--secondary)]">Six Platforms</span>
+              One Platform.{' '}
+              <span className="text-[var(--secondary)]">Infinite Reach.</span>
               <br />
-              Your Style
+              Full Automation.
             </h1>
 
             {/* Sub Headline */}
             <p className="text-lg text-[var(--muted)] mb-8 max-w-lg">
-              AI learns your brand voice. You stay in control. Broadcast to YouTube, TikTok, Instagram and more - with content that sounds like you.
+              AI creates your videos. Schedule broadcasts when you sleep. Stream live to YouTube, TikTok, Instagram and more—simultaneously. Manage everything from one dashboard.
             </p>
 
             {/* Key Benefits */}
             <div className="flex flex-wrap gap-4 mb-8">
-              {['Brand-aware AI', 'Full creative control', 'Multi-platform reach'].map((benefit) => (
+              {['AI + Live + VOD', 'Set & forget scheduling', 'All platforms, one hub'].map((benefit) => (
                 <div key={benefit} className="flex items-center gap-2 text-sm">
                   <div className="w-5 h-5 bg-[var(--secondary)]/10 rounded-full flex items-center justify-center">
                     <div className="w-2 h-2 bg-[var(--secondary)] rounded-full" />
@@ -96,7 +96,7 @@ export function HeroSection() {
                 </div>
                 <div className="flex-1 mx-4">
                   <div className="h-6 bg-white rounded-md flex items-center px-3">
-                    <span className="text-xs text-[var(--muted)]">app.xcaster.io/dashboard</span>
+                    <span className="text-xs text-[var(--muted)]">app.metacast.io/dashboard</span>
                   </div>
                 </div>
               </div>
