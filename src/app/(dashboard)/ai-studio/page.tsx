@@ -97,15 +97,30 @@ export default function AIStudioPage() {
 
       {/* Main Content */}
       <div className="p-6">
-        {/* Page Title */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-[var(--foreground)]">AI Studio</h1>
-          <p className="text-sm text-[var(--muted)] mt-1">AI-powered content creation tools</p>
+        {/* Overview Stats */}
+        <div className="grid grid-cols-4 gap-4 mb-6">
+          {stats.map((stat) => {
+            const Icon = stat.icon
+            return (
+              <div
+                key={stat.label}
+                className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <Icon size={16} className="text-[var(--secondary)]" />
+                  <span className="text-xs text-[var(--muted)]">{stat.label}</span>
+                </div>
+                <p className="text-2xl font-bold">{stat.value}</p>
+              </div>
+            )
+          })}
         </div>
 
-      {/* Main AI Features - Big Cards for Focus */}
-      <div className="grid grid-cols-3 gap-6 mb-8">
-        {aiFeatures.map((feature) => {
+        {/* Main AI Features */}
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mb-6">
+          <p className="text-xs text-[var(--muted)] mb-4">AI-powered content creation tools</p>
+          <div className="grid grid-cols-3 gap-6">
+          {aiFeatures.map((feature) => {
           const Icon = feature.icon
           return (
             <Link
@@ -136,70 +151,44 @@ export default function AIStudioPage() {
             </Link>
           )
         })}
-      </div>
-
-      {/* Quick Tools */}
-      <div className="mb-8">
-        <h2 className="text-lg font-semibold text-[var(--foreground)] mb-4">Quick Tools</h2>
-        <div className="grid grid-cols-4 gap-4">
-          {quickTools.map((tool) => {
-            const Icon = tool.icon
-            return (
-              <Link
-                key={tool.label}
-                href={tool.href}
-                className="flex items-center gap-3 bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4 hover:border-[var(--secondary)] transition-all group"
-              >
-                <div className="w-10 h-10 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-                  <Icon size={20} className="text-[var(--secondary)]" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-[var(--foreground)] group-hover:text-[var(--secondary)] transition-colors">
-                    {tool.label}
-                  </p>
-                </div>
-                <ArrowRight size={16} className="text-[var(--muted)] group-hover:text-[var(--secondary)] group-hover:translate-x-1 transition-all" />
-              </Link>
-            )
-          })}
+          </div>
         </div>
-      </div>
 
-      {/* Stats & Recent Activity */}
-      <div className="grid grid-cols-3 gap-6">
-        {/* Stats */}
-        <div className="col-span-2">
-          <h2 className="text-lg font-semibold text-[var(--foreground)] mb-4">Overview</h2>
+        {/* Quick Tools */}
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mb-6">
+          <p className="text-xs text-[var(--muted)] mb-4">Quick access to frequently used AI tools</p>
           <div className="grid grid-cols-4 gap-4">
-            {stats.map((stat) => {
-              const Icon = stat.icon
+            {quickTools.map((tool) => {
+              const Icon = tool.icon
               return (
-                <div
-                  key={stat.label}
-                  className="bg-[var(--card-bg)] rounded-xl border border-[var(--border-color)] p-4"
+                <Link
+                  key={tool.label}
+                  href={tool.href}
+                  className="flex items-center gap-3 bg-[var(--background)] border border-[var(--border-color)] rounded-xl p-4 hover:border-[var(--secondary)] transition-all group"
                 >
-                  <div className="w-9 h-9 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center mb-3">
-                    <Icon size={18} className="text-[var(--secondary)]" />
+                  <div className="w-10 h-10 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
+                    <Icon size={20} className="text-[var(--secondary)]" />
                   </div>
-                  <p className="text-2xl font-bold text-[var(--foreground)]">{stat.value}</p>
-                  <p className="text-xs text-[var(--muted)]">{stat.label}</p>
-                </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-[var(--foreground)] group-hover:text-[var(--secondary)] transition-colors">
+                      {tool.label}
+                    </p>
+                  </div>
+                  <ArrowRight size={16} className="text-[var(--muted)] group-hover:text-[var(--secondary)] group-hover:translate-x-1 transition-all" />
+                </Link>
               )
             })}
           </div>
         </div>
 
         {/* Recent Activity */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-[var(--foreground)]">Recent Activity</h2>
-            <Link href="/ai-studio/projects" className="text-xs text-[var(--secondary)] hover:underline">
-              View All
-            </Link>
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl overflow-hidden">
+          <div className="p-4 border-b border-[var(--border-color)]">
+            <p className="text-xs text-[var(--muted)]">Recent AI content generation activity</p>
           </div>
-          <div className="bg-[var(--card-bg)] rounded-xl border border-[var(--border-color)] divide-y divide-[var(--border-color)]">
+          <div className="divide-y divide-[var(--border-color)]">
             {recentActivity.map((item) => (
-              <div key={item.id} className="flex items-center gap-3 p-3 hover:bg-[var(--background)] transition-colors cursor-pointer">
+              <div key={item.id} className="flex items-center gap-3 p-4 hover:bg-[var(--background)] transition-colors cursor-pointer">
                 <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   {item.type === 'live' ? (
                     <Radio size={14} className="text-[var(--secondary)]" />
@@ -208,7 +197,7 @@ export default function AIStudioPage() {
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-[var(--foreground)] truncate">{item.title}</p>
+                  <p className="text-sm font-medium truncate">{item.title}</p>
                   <p className="text-xs text-[var(--muted)]">
                     {item.status === 'processing' ? `Processing ${item.progress}%` : item.time}
                   </p>
@@ -217,26 +206,25 @@ export default function AIStudioPage() {
             ))}
           </div>
         </div>
-      </div>
 
-      {/* AI Credits Banner */}
-      <div className="mt-8 bg-[var(--secondary)]/5 border border-[var(--secondary)]/20 rounded-xl p-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-            <Zap size={20} className="text-[var(--secondary)]" />
+        {/* AI Credits Banner */}
+        <div className="mt-6 bg-[var(--secondary)]/5 border border-[var(--secondary)]/20 rounded-xl p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
+              <Zap size={20} className="text-[var(--secondary)]" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-[var(--foreground)]">AI Credits Available</p>
+              <p className="text-xs text-[var(--muted)]">2,450 credits remaining this month</p>
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-medium text-[var(--foreground)]">AI Credits Available</p>
-            <p className="text-xs text-[var(--muted)]">2,450 credits remaining this month</p>
-          </div>
+          <Link
+            href="/settings/billing"
+            className="text-sm font-medium text-[var(--secondary)] hover:underline"
+          >
+            Manage Plan
+          </Link>
         </div>
-        <Link
-          href="/settings/billing"
-          className="text-sm font-medium text-[var(--secondary)] hover:underline"
-        >
-          Manage Plan
-        </Link>
-      </div>
       </div>
     </div>
   )

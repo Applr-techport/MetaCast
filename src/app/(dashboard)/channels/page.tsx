@@ -953,25 +953,10 @@ export default function ChannelsPage() {
     <div className="min-h-screen">
       <Header actions={<ChannelsHeaderActions channelCount={connectedChannels.length} onAddChannel={() => setShowAddModal(true)} />} />
 
-      <div className="p-6 max-w-4xl mx-auto">
-        {/* Title */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold">Channels</h1>
-          <p className="text-[var(--muted)] mt-1">
-            Manage your connected platforms for publishing and streaming
-          </p>
-        </div>
-
-        {/* 1. Overview */}
+      <div className="p-6">
+        {/* Overview Stats */}
         {connectedChannels.length > 0 && (
-          <section className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-                <BarChart2 size={16} className="text-[var(--secondary)]" />
-              </div>
-              <h2 className="text-lg font-semibold">Overview</h2>
-            </div>
-            <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-4 gap-4 mb-6">
               <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Users size={16} className="text-[var(--secondary)]" />
@@ -1004,19 +989,12 @@ export default function ChannelsPage() {
                 <p className="text-2xl font-bold">5</p>
                 <p className="text-xs text-[var(--muted)]">Upcoming posts</p>
               </div>
-            </div>
-          </section>
+          </div>
         )}
 
-        {/* 2. Connected Channels */}
-        <section className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-              <Link2 size={16} className="text-[var(--secondary)]" />
-            </div>
-            <h2 className="text-lg font-semibold">Connected Channels</h2>
-          </div>
-
+        {/* Connected Channels */}
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mb-6">
+          <p className="text-xs text-[var(--muted)] mb-4">Connected platform accounts for multi-streaming</p>
           {connectedChannels.length > 0 ? (
             <div className="space-y-3">
               {connectedChannels.map((channel) => (
@@ -1046,17 +1024,12 @@ export default function ChannelsPage() {
               </button>
             </div>
           )}
-        </section>
+        </div>
 
-        {/* 3. API Usage & Limits */}
+        {/* API Usage & Limits */}
         {connectedChannels.length > 0 && (
-          <section className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-                <Zap size={16} className="text-[var(--secondary)]" />
-              </div>
-              <h2 className="text-lg font-semibold">API Usage & Limits</h2>
-            </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mb-6">
+            <p className="text-xs text-[var(--muted)] mb-4">Platform API quotas and usage limits</p>
             <div className="grid grid-cols-2 gap-4">
               {connectedChannels.filter(c => c.status === 'active').map((channel) => {
                 const info = platformInfo[channel.platform]
@@ -1112,22 +1085,17 @@ export default function ChannelsPage() {
                 )
               })}
             </div>
-          </section>
+          </div>
         )}
 
-        {/* 4. Recent Activity */}
+        {/* Recent Activity */}
         {connectedChannels.length > 0 && (
-          <section className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-                  <Clock size={16} className="text-[var(--secondary)]" />
-                </div>
-                <h2 className="text-lg font-semibold">Recent Activity</h2>
-              </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl overflow-hidden mb-6">
+            <div className="flex items-center justify-between p-4 border-b border-[var(--border-color)]">
+              <p className="text-xs text-[var(--muted)]">Recent publishing activity</p>
               <button className="text-sm text-[var(--secondary)] hover:underline">View All</button>
             </div>
-            <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl divide-y divide-[var(--border-color)]">
+            <div className="divide-y divide-[var(--border-color)]">
               {recentActivity.map((activity) => (
                 <div key={activity.id} className="flex items-center gap-4 p-4 hover:bg-[var(--background)] transition-colors">
                   <PlatformIcon platform={activity.platform} size={16} />
@@ -1164,11 +1132,11 @@ export default function ChannelsPage() {
                 </div>
               ))}
             </div>
-          </section>
+          </div>
         )}
 
         {/* Info */}
-        <section className="mt-8">
+        <div className="mt-6">
           <div className="bg-[var(--secondary)]/5 border border-[var(--secondary)]/20 rounded-xl p-4">
             <div className="flex gap-4">
               <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1186,7 +1154,7 @@ export default function ChannelsPage() {
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </div>
 
       {/* Modals */}

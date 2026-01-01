@@ -1486,33 +1486,33 @@ export default function AssetsPage() {
       <Header actions={<AssetsHeaderActions onUploadClick={() => setUploadModalOpen(true)} />} />
 
       <div className="p-6">
-        {/* Stats Overview */}
+        {/* Overview Stats */}
         <div className="grid grid-cols-4 gap-4 mb-6">
           <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
-            <div className="flex items-center gap-2 text-[var(--muted)] text-sm mb-1">
-              <HardDrive size={14} />
-              <span>Total Assets</span>
+            <div className="flex items-center gap-2 mb-2">
+              <HardDrive size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Total Assets</span>
             </div>
             <p className="text-2xl font-bold">{stats.total}</p>
           </div>
           <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
-            <div className="flex items-center gap-2 text-[var(--secondary)] text-sm mb-1">
-              <Sparkles size={14} />
-              <span>AI Generated</span>
+            <div className="flex items-center gap-2 mb-2">
+              <Sparkles size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">AI Generated</span>
             </div>
             <p className="text-2xl font-bold">{stats.aiGenerated}</p>
           </div>
           <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
-            <div className="flex items-center gap-2 text-[var(--secondary)] text-sm mb-1">
-              <Radio size={14} />
-              <span>Live Streams</span>
+            <div className="flex items-center gap-2 mb-2">
+              <Radio size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Live Streams</span>
             </div>
             <p className="text-2xl font-bold">{stats.liveStreams}</p>
           </div>
           <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
-            <div className="flex items-center gap-2 text-[var(--secondary)] text-sm mb-1">
-              <Clock size={14} />
-              <span>Processing</span>
+            <div className="flex items-center gap-2 mb-2">
+              <Clock size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Processing</span>
             </div>
             <p className="text-2xl font-bold">{stats.processing}</p>
           </div>
@@ -1822,6 +1822,8 @@ export default function AssetsPage() {
         </div>
 
         {/* Assets Grid/List */}
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mt-6">
+          <p className="text-xs text-[var(--muted)] mb-4">Media files from AI Studio, live streams, and uploads</p>
         {filteredAssets.length === 0 ? (
           <div className="text-center py-16">
             <HardDrive size={48} className="text-[var(--muted)] mx-auto mb-4" />
@@ -1857,6 +1859,7 @@ export default function AssetsPage() {
             ))}
           </div>
         )}
+        </div>
 
         {/* Pagination */}
         {totalPages > 1 && (

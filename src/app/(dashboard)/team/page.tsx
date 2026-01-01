@@ -585,17 +585,9 @@ export default function TeamPage() {
         }
       />
 
-      <div className="p-6 max-w-5xl mx-auto">
-        {/* Title */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold">Team</h1>
-          <p className="text-[var(--muted)] mt-1">
-            Manage your team members and their permissions
-          </p>
-        </div>
-
+      <div className="p-6">
         {/* Overview Stats */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-4 gap-4 mb-6">
           <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
             <div className="flex items-center gap-2 mb-2">
               <Users size={16} className="text-[var(--secondary)]" />
@@ -629,15 +621,11 @@ export default function TeamPage() {
         </div>
 
         {/* Members Table */}
-        <section className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-              <Users size={16} className="text-[var(--secondary)]" />
-            </div>
-            <h2 className="text-lg font-semibold">Members</h2>
-          </div>
-
+        <div className="mb-6">
           <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl overflow-hidden">
+            <div className="px-6 py-4 border-b border-[var(--border-color)]">
+              <p className="text-xs text-[var(--muted)]">Team members with access to this workspace</p>
+            </div>
             <table className="w-full">
               <thead>
                 <tr className="border-b border-[var(--border-color)]">
@@ -669,19 +657,16 @@ export default function TeamPage() {
               </tbody>
             </table>
           </div>
-        </section>
+        </div>
 
         {/* Pending Invitations */}
         {pendingInvitations.length > 0 && (
-          <section className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-                <Mail size={16} className="text-[var(--secondary)]" />
+          <div className="mb-6">
+            <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl overflow-hidden">
+              <div className="px-6 py-4 border-b border-[var(--border-color)]">
+                <p className="text-xs text-[var(--muted)]">Awaiting response from invited members</p>
               </div>
-              <h2 className="text-lg font-semibold">Pending Invitations</h2>
-            </div>
-
-            <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl divide-y divide-[var(--border-color)]">
+              <div className="divide-y divide-[var(--border-color)]">
               {pendingInvitations.map((invite) => (
                 <div
                   key={invite.id}
@@ -711,19 +696,14 @@ export default function TeamPage() {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
-          </section>
+          </div>
         )}
 
         {/* Role Permissions Info */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-              <Shield size={16} className="text-[var(--secondary)]" />
-            </div>
-            <h2 className="text-lg font-semibold">Role Permissions</h2>
-          </div>
-
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6">
+          <p className="text-xs text-[var(--muted)] mb-4">Role-based access permissions for team members</p>
           <div className="grid grid-cols-3 gap-4">
             {(['owner', 'admin', 'member'] as Role[]).map((role) => {
               const Icon = roleInfo[role].icon
@@ -762,7 +742,7 @@ export default function TeamPage() {
               )
             })}
           </div>
-        </section>
+        </div>
       </div>
 
       {/* Invite Modal */}

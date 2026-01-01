@@ -2,7 +2,7 @@
 
 import { Header } from '@/components/layout/Header'
 import { NewStreamButton } from '@/components/layout/NewStreamButton'
-import { Play, Package, Volume2, Video, Radio, Users, Sparkles, Bot, Film, Wand2, ArrowRight, Zap } from 'lucide-react'
+import { Play, Package, Volume2, Video, Radio, Users, Eye, Clock, HardDrive } from 'lucide-react'
 import Link from 'next/link'
 
 // Dashboard Header Actions
@@ -58,9 +58,8 @@ function StreamCard({
         {renderIcon()}
         {/* 상품 방송 표시 */}
         {isProductStream && (
-          <span className="absolute top-2 right-2 px-2 py-0.5 bg-[var(--secondary)] text-white text-xs font-medium rounded flex items-center gap-1">
+          <span className="absolute top-2 right-2 p-1.5 bg-[var(--secondary)] text-white rounded">
             <Package size={12} />
-            Product
           </span>
         )}
       </div>
@@ -196,8 +195,7 @@ function StorageDonut({ available }: { available: string }) {
 function ConnectionsChart() {
   return (
     <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
-      <h2 className="text-lg font-semibold mb-4">Connections</h2>
-
+      <p className="text-xs text-[var(--muted)] mb-4">Viewer connections by streaming protocol</p>
       {/* 필터 */}
       <div className="flex flex-wrap items-center gap-4 mb-4">
         <select className="px-3 py-2 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm">
@@ -285,8 +283,7 @@ function ConnectionsChart() {
 function NetworkChart() {
   return (
     <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
-      <h2 className="text-lg font-semibold mb-4">Network</h2>
-
+      <p className="text-xs text-[var(--muted)] mb-4">Network bandwidth usage for streaming</p>
       {/* 필터 */}
       <div className="flex flex-wrap items-center gap-4 mb-4">
         <select className="px-3 py-2 bg-[var(--background)] border border-[var(--border-color)] rounded-lg text-sm">
@@ -359,113 +356,51 @@ function NetworkChart() {
   )
 }
 
-// AI Studio Quick Access
-function AIStudioQuickAccess() {
-  const aiFeatures = [
-    {
-      icon: Bot,
-      title: 'AI Co-Host',
-      description: 'Stream with AI assistance',
-      href: '/ai-studio/live-stream',
-      badge: 'Popular',
-    },
-    {
-      icon: Film,
-      title: 'Video Generator',
-      description: 'Create videos with AI',
-      href: '/ai-studio/video-generator',
-    },
-    {
-      icon: Wand2,
-      title: 'AI Tools',
-      description: 'Thumbnails, captions & more',
-      href: '/ai-studio/tools',
-    },
-  ]
-
-  return (
-    <div className="bg-gradient-to-r from-[var(--secondary)]/5 to-[var(--secondary)]/10 border border-[var(--secondary)]/20 rounded-xl p-5">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-            <Sparkles size={20} className="text-[var(--secondary)]" />
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold">AI Studio</h2>
-            <p className="text-sm text-[var(--muted)]">Enhance your content with AI</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-[var(--secondary)]/10 rounded-lg">
-            <Zap size={14} className="text-[var(--secondary)]" />
-            <span className="text-sm font-medium text-[var(--secondary)]">68 credits</span>
-          </div>
-          <Link
-            href="/ai-studio"
-            className="text-sm text-[var(--secondary)] hover:underline flex items-center gap-1"
-          >
-            View All <ArrowRight size={14} />
-          </Link>
-        </div>
-      </div>
-      <div className="grid grid-cols-3 gap-4">
-        {aiFeatures.map((feature) => {
-          const Icon = feature.icon
-          return (
-            <Link
-              key={feature.title}
-              href={feature.href}
-              className="group bg-[var(--card-bg)] rounded-lg p-4 hover:border-[var(--secondary)] border border-transparent transition-all"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-9 h-9 bg-[var(--secondary)]/10 rounded-lg flex items-center justify-center">
-                  <Icon size={18} className="text-[var(--secondary)]" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-sm group-hover:text-[var(--secondary)] transition-colors">
-                      {feature.title}
-                    </span>
-                    {feature.badge && (
-                      <span className="px-1.5 py-0.5 bg-[var(--secondary)]/10 text-[var(--secondary)] text-[10px] font-medium rounded">
-                        {feature.badge}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-[var(--muted)]">{feature.description}</p>
-                </div>
-              </div>
-            </Link>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
 export default function DashboardPage() {
   return (
     <div className="min-h-screen">
       <Header actions={<DashboardHeaderActions />} />
 
-      <div className="p-6 space-y-8">
-        {/* 타이틀 */}
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-
-        {/* AI Studio Quick Access */}
-        <AIStudioQuickAccess />
+      <div className="p-6 space-y-6">
+        {/* Overview Stats */}
+        <div className="grid grid-cols-4 gap-4">
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Eye size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Total Views</span>
+            </div>
+            <p className="text-2xl font-bold">128.4K</p>
+            <p className="text-xs text-[var(--success)]">+18% this week</p>
+          </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Radio size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Live Streams</span>
+            </div>
+            <p className="text-2xl font-bold">24</p>
+            <p className="text-xs text-[var(--muted)]">This month</p>
+          </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Clock size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Scheduled</span>
+            </div>
+            <p className="text-2xl font-bold">6</p>
+            <p className="text-xs text-[var(--muted)]">Upcoming streams</p>
+          </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <HardDrive size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Storage Used</span>
+            </div>
+            <p className="text-2xl font-bold">72GB</p>
+            <p className="text-xs text-[var(--muted)]">of 100GB</p>
+          </div>
+        </div>
 
         {/* Stream List */}
-        <section>
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold">Stream List</h2>
-            <Link
-              href="/streams"
-              className="px-4 py-2 bg-[var(--primary)] text-white rounded-lg text-sm font-medium hover:bg-[var(--primary-hover)] transition-colors"
-            >
-              More
-            </Link>
-          </div>
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6">
+          <p className="text-xs text-[var(--muted)] mb-4">Recent and live streams from Schedule</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <StreamCard
               type="live"
@@ -494,33 +429,33 @@ export default function DashboardPage() {
               platforms={['My Website']}
             />
           </div>
-        </section>
+        </div>
 
         {/* Storage */}
-        <section>
-          <h2 className="text-lg font-semibold mb-4">Storage</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StorageCard
-              icon={Play}
-              title="Saved Livestream"
-              count="45 Videos"
-              size="34GB"
-            />
-            <StorageCard
-              icon={Play}
-              title="Video on Demand"
-              count="45 Videos"
-              size="25GB"
-            />
-            <StorageCard
-              icon={Volume2}
-              title="Ads Video"
-              count="45 Videos"
-              size="13GB"
-            />
-            <StorageDonut available="8GB" />
+        <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6">
+          <p className="text-xs text-[var(--muted)] mb-4">Storage usage by content type from Assets</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <StorageCard
+            icon={Play}
+            title="Saved Livestream"
+            count="45 Videos"
+            size="34GB"
+          />
+          <StorageCard
+            icon={Play}
+            title="Video on Demand"
+            count="45 Videos"
+            size="25GB"
+          />
+          <StorageCard
+            icon={Volume2}
+            title="Ads Video"
+            count="45 Videos"
+            size="13GB"
+          />
+          <StorageDonut available="8GB" />
           </div>
-        </section>
+        </div>
 
         {/* Connections */}
         <ConnectionsChart />

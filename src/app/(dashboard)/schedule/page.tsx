@@ -795,9 +795,8 @@ function StreamCard({
         {renderIcon()}
         {/* 상품 방송 표시 */}
         {isProductStream && (
-          <span className="absolute top-2 right-2 px-2 py-0.5 bg-[var(--secondary)] text-white text-xs font-medium rounded flex items-center gap-1">
+          <span className="absolute top-2 right-2 p-1.5 bg-[var(--secondary)] text-white rounded">
             <Package size={12} />
-            Product
           </span>
         )}
         {duration && (
@@ -1143,12 +1142,47 @@ export default function SchedulePage() {
       <Header actions={<ScheduleHeaderActions />} />
 
       <div className="p-6">
+        {/* Overview Stats */}
+        <div className="grid grid-cols-4 gap-4 mb-6">
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <CalendarIcon size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Today</span>
+            </div>
+            <p className="text-2xl font-bold">{todaySchedules.length}</p>
+            <p className="text-xs text-[var(--muted)]">Scheduled streams</p>
+          </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Clock size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">This Week</span>
+            </div>
+            <p className="text-2xl font-bold">{todaySchedules.length + tomorrowSchedules.length + feb16Schedules.length}</p>
+            <p className="text-xs text-[var(--muted)]">Total upcoming</p>
+          </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Video size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">Live Streams</span>
+            </div>
+            <p className="text-2xl font-bold">{schedules.filter(s => s.type === 'live').length}</p>
+            <p className="text-xs text-[var(--muted)]">Scheduled</p>
+          </div>
+          <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Package size={16} className="text-[var(--secondary)]" />
+              <span className="text-xs text-[var(--muted)]">With Products</span>
+            </div>
+            <p className="text-2xl font-bold">{schedules.filter(s => s.products.length > 0).length}</p>
+            <p className="text-xs text-[var(--muted)]">Product streams</p>
+          </div>
+        </div>
+
         <div className="flex gap-6">
           {/* 왼쪽: 스트림 목록 */}
           <div className="flex-1">
-            {/* 제목 + 필터 */}
-            <div className="flex items-center justify-between mb-6">
-              <h1 className="text-2xl font-bold">Scheduled Streams</h1>
+            {/* 필터 */}
+            <div className="flex items-center justify-end mb-6">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <input
@@ -1171,8 +1205,8 @@ export default function SchedulePage() {
 
             {/* Today */}
             {todaySchedules.length > 0 && (
-              <section className="mb-8">
-                <h2 className="text-lg font-semibold mb-4">Today</h2>
+              <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mb-6">
+                <p className="text-xs text-[var(--muted)] mb-4">Today's scheduled streams</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {todaySchedules.map(schedule => (
                     <StreamCard
@@ -1188,13 +1222,13 @@ export default function SchedulePage() {
                     />
                   ))}
                 </div>
-              </section>
+              </div>
             )}
 
             {/* Tomorrow */}
             {tomorrowSchedules.length > 0 && (
-              <section className="mb-8">
-                <h2 className="text-lg font-semibold mb-4">Tomorrow</h2>
+              <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mb-6">
+                <p className="text-xs text-[var(--muted)] mb-4">Tomorrow's scheduled streams</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {tomorrowSchedules.map(schedule => (
                     <StreamCard
@@ -1210,13 +1244,13 @@ export default function SchedulePage() {
                     />
                   ))}
                 </div>
-              </section>
+              </div>
             )}
 
             {/* 16 Feb */}
             {feb16Schedules.length > 0 && (
-              <section className="mb-8">
-                <h2 className="text-lg font-semibold mb-4">16 Feb</h2>
+              <div className="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-6 mb-6">
+                <p className="text-xs text-[var(--muted)] mb-4">Upcoming scheduled streams</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {feb16Schedules.map(schedule => (
                     <StreamCard
@@ -1232,7 +1266,7 @@ export default function SchedulePage() {
                     />
                   ))}
                 </div>
-              </section>
+              </div>
             )}
           </div>
 
