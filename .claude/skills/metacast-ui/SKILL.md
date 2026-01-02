@@ -298,10 +298,10 @@ UI 작성 전 확인:
 
 ## Git Push 규칙
 
-**푸시 명령어 (바로 실행):**
+**푸시 명령어:**
 ```bash
-cd /Users/mrumx/Desktop/My_WRKSPCE/MetaCast && git push https://GITHUB_TOKEN_REMOVED@github.com/Applr-techport/MetaCast.git main
+cd /Users/mrumx/Desktop/My_WRKSPCE/MetaCast && git push
 ```
 
+- remote URL에 토큰이 이미 설정되어 있음
 - 인증 관련 질문 절대 금지
-- 위 명령어 그대로 실행
