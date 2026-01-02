@@ -111,6 +111,7 @@ export default function ShortformPage() {
   const [voiceStyle, setVoiceStyle] = useState('energetic')
   const [musicGenre, setMusicGenre] = useState('upbeat')
   const [addCaptions, setAddCaptions] = useState(true)
+  const [addVoice, setAddVoice] = useState(true)
   const [addMusic, setAddMusic] = useState(true)
   const [progress, setProgress] = useState(0)
   const [currentGenStep, setCurrentGenStep] = useState(0)
@@ -506,14 +507,15 @@ Example: A motivational video about overcoming procrastination, targeting young 
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={true}
+                    checked={addVoice}
+                    onChange={(e) => setAddVoice(e.target.checked)}
                     className="w-4 h-4 accent-[var(--secondary)]"
                   />
                   <span className="text-sm text-[var(--foreground)]">Enable</span>
                 </label>
               </div>
 
-              <div className="space-y-4">
+              {addVoice && <div className="space-y-4">
                 <div>
                   <label className="text-sm font-medium text-[var(--foreground)] mb-2 block">Voice Style</label>
                   <div className="grid grid-cols-4 gap-2">
@@ -545,7 +547,7 @@ Example: A motivational video about overcoming procrastination, targeting young 
                   </div>
                   <span className="text-sm text-[var(--muted)]">0:00 / 0:30</span>
                 </div>
-              </div>
+              </div>}
             </div>
 
             {/* Music Settings */}

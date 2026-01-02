@@ -189,7 +189,7 @@ export function Sidebar() {
           {collapsed ? (
             <button
               onClick={() => setShowUpgradeModal(true)}
-              className="w-full p-2.5 bg-white border-2 border-[var(--secondary)] text-[var(--secondary)] rounded-lg hover:bg-[var(--secondary)]/5 transition-colors flex items-center justify-center"
+              className="w-full p-2.5 text-[var(--secondary)] rounded-lg flex items-center justify-center"
               title="Upgrade Plan"
             >
               <Zap size={18} />
@@ -197,9 +197,10 @@ export function Sidebar() {
           ) : (
             <button
               onClick={() => setShowUpgradeModal(true)}
-              className="w-full px-4 py-2.5 bg-white border-2 border-[var(--secondary)] text-[var(--secondary)] rounded-lg text-sm font-semibold hover:bg-[var(--secondary)]/5 transition-colors"
+              className="w-full flex items-center gap-3 px-3 py-2.5 text-[var(--secondary)] rounded-lg text-sm font-medium"
             >
-              UPGRADE PLAN
+              <Zap size={18} />
+              <span>Upgrade Plan</span>
             </button>
           )}
         </div>
@@ -210,7 +211,7 @@ export function Sidebar() {
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
               className={cn(
-                'w-full flex items-center rounded-lg hover:bg-[var(--border-color)]/50 transition-colors',
+                'w-full flex items-center rounded-lg',
                 collapsed ? 'justify-center p-2' : 'px-2 py-2'
               )}
             >

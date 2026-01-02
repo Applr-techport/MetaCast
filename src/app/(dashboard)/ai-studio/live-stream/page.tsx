@@ -333,10 +333,10 @@ export default function AILiveStreamPage() {
                       <label className="block text-sm font-medium text-[var(--foreground)] mb-3">Voice Selection</label>
                       <div className="grid grid-cols-3 gap-3">
                         {voices.map((voice) => (
-                          <button
+                          <div
                             key={voice.id}
                             onClick={() => setSelectedVoice(voice.id)}
-                            className={`p-4 rounded-xl border-2 text-left transition-all ${
+                            className={`p-4 rounded-xl border-2 text-left transition-all cursor-pointer ${
                               selectedVoice === voice.id
                                 ? 'border-[var(--secondary)] bg-[var(--secondary)]/5'
                                 : 'border-[var(--border-color)] hover:border-[var(--secondary)]/50'
@@ -353,11 +353,14 @@ export default function AILiveStreamPage() {
                                 <p className="text-xs text-[var(--muted)]">{voice.gender} / {voice.language}</p>
                               </div>
                             </div>
-                            <button className="mt-3 flex items-center gap-1.5 text-xs text-[var(--secondary)] hover:underline">
+                            <button
+                              onClick={(e) => e.stopPropagation()}
+                              className="mt-3 flex items-center gap-1.5 text-xs text-[var(--secondary)] hover:underline"
+                            >
                               <Play size={12} />
                               Preview
                             </button>
-                          </button>
+                          </div>
                         ))}
                       </div>
                     </div>
